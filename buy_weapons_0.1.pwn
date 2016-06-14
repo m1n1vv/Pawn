@@ -23,8 +23,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     {
         if(response)
         {
-            if(pInfo[playerid][pMoney] < mn_price[playerid]) return SendClientMessage(playerid, 0xAA3333AA, !"У Вас недостаточно средств");
-            pInfo[playerid][pMoney] -= mn_price[playerid];
+            if(GetPlayerMoney(playerid) < mn_price[playerid]) return SendClientMessage(playerid, 0xAA3333AA, !"У Вас недостаточно средств");
+            GivePlayerMoney(playerid, -mn_price[playerid]);
             GivePlayerWeapon(playerid, mn_weaponid{playerid}, mn_ammunition{playerid});
             SendClientMessage(playerid, 0x33AA33AA, !"Вы успешно совершили покупку");
             mn_weaponid{playerid} = 0;
