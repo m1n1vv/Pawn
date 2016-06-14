@@ -51,3 +51,22 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 #if defined mn_OnDialogResponse
 forward mn_OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
 #endif
+public OnPlayerDisconnect(playerid, reason)
+{
+    mn_weaponid{playerid} = 0;
+    mn_ammunition{playerid} = 0;
+    mn_price[playerid] = 0;
+#if defined mn_OnPlayerDisconnect
+    mn_OnPlayerDisconnect(playerid, reason);
+#endif
+    return 1;
+}
+#if defined _ALS_OnPlayerDisconnect
+    #undef OnPlayerDisconnect
+#else
+    #define _ALS_OnPlayerDisconnect
+#endif
+#define OnPlayerDisconnect mn_OnPlayerDisconnect
+#if defined mn_OnPlayerDisconnect
+forward mn_OnPlayerDisconnect(playerid, reason);
+#endif
