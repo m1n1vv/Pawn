@@ -27,17 +27,11 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
             GivePlayerMoney(playerid, -mn_price[playerid]);
             GivePlayerWeapon(playerid, mn_weaponid{playerid}, mn_ammunition{playerid});
             SendClientMessage(playerid, 0x33AA33AA, !"Вы успешно совершили покупку");
-            mn_weaponid{playerid} = 0;
-            mn_ammunition{playerid} = 0;
-            mn_price[playerid] = 0;
             return 1;
         }
         else
         {
             SendClientMessage(playerid, 0xAA3333AA, !"Покупка отклонена");
-            mn_weaponid{playerid} = 0;
-            mn_ammunition{playerid} = 0;
-            mn_price[playerid] = 0;
             return 1;
         }
     }
