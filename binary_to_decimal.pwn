@@ -7,7 +7,7 @@ main()
         res,
         string[50];
     static sub[] = "1000101";
-    for(new i=0; i < sizeof(sub)-1; i++)
+    for(new i = 0; i < sizeof(sub)-1; i++)
     {
         if(st == false)
         {
