@@ -70,3 +70,114 @@ public OnPlayerDisconnect(playerid, reason)
 #if defined mn_OnPlayerDisconnect
 forward mn_OnPlayerDisconnect(playerid, reason);
 #endif
+stock PlayerWeapon(playerid)
+{
+    switch(mn_weaponid{playerid})
+    {
+        case 22:
+        {
+            mn_weap_name = "9mm";
+            mn_caliber = ".45";
+            mn_ammunition{playerid} = 17;
+            mn_shooting_range = "30-35 метров";
+            mn_price[playerid] = 1720;
+        }
+        case 23:
+        {
+            mn_weap_name = "Silenced 9mm";
+            mn_caliber = ".45";
+            mn_ammunition{playerid} = 17;
+            mn_shooting_range = "30-35 метров";
+            mn_price[playerid] = 2135;
+        }
+        case 24:
+        {
+            mn_weap_name = "Desert Eagle";
+            mn_caliber = ".50";
+            mn_ammunition{playerid} = 7;
+            mn_shooting_range = "30-35 метров";
+            mn_price[playerid] = 2476;
+        }
+        case 25:
+        {
+            mn_weap_name = "Shotgun";
+            mn_caliber = "12-й";
+            mn_ammunition{playerid} = 1;
+            mn_shooting_range = "40 метров";
+            mn_price[playerid] = 1459;
+        }
+        case 26:
+        {
+            mn_weap_name = "Sawnoff Shotgun";
+            mn_caliber = "12-й";
+            mn_ammunition{playerid} = 2;
+            mn_shooting_range = "30-35 метров";
+            mn_price[playerid] = 1928;
+        }
+        case 27:
+        {
+            mn_weap_name = "Combat Shotgun";
+            mn_caliber = "12-й";
+            mn_ammunition{playerid} = 7;
+            mn_shooting_range = "40 метров";
+            mn_price[playerid] = 2836;
+        }
+        case 28:
+        {
+            mn_weap_name = "Micro SMG/Uzi";
+            mn_caliber = "9x19 мм Парабеллум";
+            mn_ammunition{playerid} = 50;
+            mn_shooting_range = "30-35 метров";
+            mn_price[playerid] = 1838;
+        }
+        case 29:
+        {
+            mn_weap_name = "MP5";
+            mn_caliber = "9x19 мм Парабеллум";
+            mn_ammunition{playerid} = 30;
+            mn_shooting_range = "40-45 метров";
+            mn_price[playerid] = 2382;
+        }
+        case 30:
+        {
+            mn_weap_name = "AK-47";
+            mn_caliber = "7,62 мм";
+            mn_ammunition{playerid} = 30;
+            mn_shooting_range = "70 метров";
+            mn_price[playerid] = 3718;
+        }
+        case 31:
+        {
+            mn_weap_name = "M4";
+            mn_caliber = "5,56x45 мм НАТО";
+            mn_ammunition{playerid} = 50;
+            mn_shooting_range = "90 метров";
+            mn_price[playerid] = 3967;
+        }
+        case 32:
+        {
+            mn_weap_name = "Tec-9";
+            mn_caliber = "9x19 мм Парабеллум";
+            mn_ammunition{playerid} = 50;
+            mn_shooting_range = "30-35 метров";
+            mn_price[playerid] = 2593;
+        }
+        case 33:
+        {
+            mn_weap_name = "Country Rifle";
+            mn_caliber = "7,62 мм";
+            mn_ammunition{playerid} = 1;
+            mn_shooting_range = "100 метров";
+            mn_price[playerid] = 4391;
+        }
+        case 34:
+        {
+            mn_weap_name = "Country Rifle";
+            mn_caliber = "7,62 мм";
+            mn_ammunition{playerid} = 1;
+            mn_shooting_range = "100 метров";
+            mn_price[playerid] = 5628;
+        }
+    }
+    return 1;
+}
