@@ -17,3 +17,28 @@ stock BuyWeapons(playerid, weaponid)
     ShowPlayerDialog(playerid, DIALOG_WEAPONS_ID, DIALOG_STYLE_MSGBOX, "Покупка оружия", string, "Купить", "Закрыть");
     return 1;
 }
+public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
+{
+    if(dialogid == DIALOG_WEAPONS_ID)
+    {
+        if(response)
+        {
+            if(pInfo[playerid][pExMoney] < mn_price[playerid]) return SendClientMessage(playerid, 0xAA3333AA, !"У Вас недостаточно средств");
+            pInfo[playerid][pExMoney] -= mn_price[playerid];
+            GivePlayerWeapon(playerid, mn_weaponid{playerid}, mn_ammunition{playerid});
+            SendClientMessage(playerid, 0x33AA33AA, !"Вы успешно совершили покупку");
+            return 1;
+        }
+        else
+        {
+            SendClientMessage(playerid, 0xAA3333AA, !"Покупка отклонена");
+            mn_weaponid{playerid} = 0;
+            mn_ammunition{playerid} = 0;
+            mn_price[playerid] = 0;
+            return 1;
+        }
+    }
+#if defined mn_OnDialogResponse
+    return mn_OnDialogResponse(playerid, dialogid, response, listitem, inputtext);
+#endif
+}
