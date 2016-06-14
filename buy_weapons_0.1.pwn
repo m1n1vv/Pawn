@@ -27,6 +27,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
             pInfo[playerid][pMoney] -= mn_price[playerid];
             GivePlayerWeapon(playerid, mn_weaponid{playerid}, mn_ammunition{playerid});
             SendClientMessage(playerid, 0x33AA33AA, !"Вы успешно совершили покупку");
+            mn_weaponid{playerid} = 0;
+            mn_ammunition{playerid} = 0;
+            mn_price[playerid] = 0;
             return 1;
         }
         else
