@@ -42,3 +42,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     return mn_OnDialogResponse(playerid, dialogid, response, listitem, inputtext);
 #endif
 }
+#if defined _ALS_OnDialogResponse
+    #undef OnDialogResponse
+#else
+    #define _ALS_OnDialogResponse
+#endif
+#define OnDialogResponse mn_OnDialogResponse
+#if defined mn_OnDialogResponse
+forward mn_OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
+#endif
