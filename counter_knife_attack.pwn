@@ -45,7 +45,6 @@ public Knife100HPDO(playerid)
 	RemovePlayerAttachedObject(playerid, 6);
 	return 1;
 }
-//Находим транспорт в радиусе
 stock GetClosestCar(playerid, Float:dist)
 { 
 	new Float:x, Float:y, Float:z; 
