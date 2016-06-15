@@ -1,4 +1,4 @@
-forward Knife100HP(playerid);
+forward Knife100HP(playerid); 
 forward Knife100HPDO(playerid);
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys) 
 { 
