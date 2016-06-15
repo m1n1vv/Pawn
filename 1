@@ -1,18 +1,13 @@
-#define MAX_WEAPONS_NAME 20
-#define DIALOG_WEAPONS_ID 18498
-static mn_weaponid[MAX_PLAYERS char];
-static mn_weap_name[MAX_WEAPONS_NAME];
-static mn_caliber[MAX_WEAPONS_NAME];
-static mn_ammunition[MAX_PLAYERS char];
-static mn_shooting_range[MAX_WEAPONS_NAME+10];
-static mn_price[MAX_PLAYERS];
-stock BuyWeapons(playerid, weaponid)
-{
-    mn_weaponid{playerid} = weaponid; 
-    PlayerWeapon(playerid);
-    static const str[] = "Оружие: \t\t\t%s\n\nКалибр: \t\t\t%s\nПатронов в обойме: \t\t%i\nДальность стрельбы: \t\t%s\nЦена: \t\t\t\t$%i";
-    new string[sizeof str+MAX_WEAPONS_NAME*3+10+2+5-(7+6+5+5+6)];
-    format(string, sizeof string, str, mn_weap_name, mn_caliber, mn_ammunition{playerid}, mn_shooting_range, mn_price[playerid]);
-    ShowPlayerDialog(playerid, DIALOG_WEAPONS_ID, DIALOG_STYLE_MSGBOX, "Покупка оружия", string, "Купить", "Закрыть");
-    return 1;
-}
+forward Knife100HP(playerid);
+forward Knife100HPDO(playerid);
+public OnPlayerKeyStateChange(playerid, newkeys, oldkeys) 
+{ 
+	if((newkeys & 16) && GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
+	{
+		if(GetPVarInt(playerid, "Knife") > gettime()) return 1;
+		SetPVarInt(playerid, "Knife", gettime()+2);
+		SetTimerEx("Knife100HP", 0, false, "i", playerid);
+		return 1;
+	}
+	return 1; 
+} 
