@@ -21,7 +21,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 #endif
 #define OnPlayerKeyStateChange mn_knife__OnPlayerKeyStateChange
 #if defined mn_knife__OnPlayerKeyStateChange
-forward mn_OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
+forward  mn_knife__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
 #endif
 public Knife100HP(playerid)
 {
