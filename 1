@@ -1,5 +1,4 @@
-forward Knife100HP(playerid);
-forward Knife100HPDO(playerid);
+
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys) 
 { 
 	if((newkeys & 16) && GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
@@ -9,5 +8,5 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		SetTimerEx("Knife100HP", 0, false, "i", playerid);
 		return 1;
 	}
-	return 1; 
+	return 1;  
 } 
