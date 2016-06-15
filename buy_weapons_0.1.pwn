@@ -10,7 +10,6 @@ stock BuyWeapons(playerid, weaponid)
 {
     mn_weaponid{playerid} = weaponid; 
     PlayerWeapon(playerid);
-    SendClientMessage(playerid, -1, "1");
     static const str[] = "Оружие: \t\t\t%s\n\nКалибр: \t\t\t%s\nПатронов в обойме: \t\t%i\nДальность стрельбы: \t\t%s\nЦена: \t\t\t\t$%i";
     new string[sizeof str+MAX_WEAPONS_NAME*3+10+2+5-(7+6+5+5+6)];
     format(string, sizeof string, str, mn_weap_name, mn_caliber, mn_ammunition{playerid}, mn_shooting_range, mn_price[playerid]);
