@@ -11,7 +11,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	}
 	return 1; 
 } 
-public Knife100HP(playerid)
+public Knife100HP(playerid) 
 {
 	new Float:health;
 	GetPlayerHealth(playerid, health);
