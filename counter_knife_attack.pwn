@@ -9,8 +9,20 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
         SetTimerEx("Knife100HP", 0, false, "i", playerid);
         return 1;
     }
-    return 1; 
-} 
+#if defined mn_knife__OnPlayerKeyStateChange
+    mn_knife__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
+#endif
+    return 1;
+}
+#if defined _ALS_OnPlayerKeyStateChange
+    #undef OnPlayerKeyStateChange
+#else
+    #define _ALS_OnPlayerKeyStateChange
+#endif
+#define OnPlayerKeyStateChange mn_knife__OnPlayerKeyStateChange
+#if defined mn_knife__OnPlayerKeyStateChange
+forward mn_OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
+#endif
 public Knife100HP(playerid)
 {
     new Float:health;
