@@ -1,4 +1,4 @@
-#define MAX_WEAPONS_NAME 20
+#define MAX_WEAPONS_NAME 20 
 #define DIALOG_WEAPONS_ID 18498
 static mn_weaponid[MAX_PLAYERS char];
 static mn_weap_name[MAX_WEAPONS_NAME];
