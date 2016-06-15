@@ -45,25 +45,3 @@ public Knife100HPDO(playerid)
 	RemovePlayerAttachedObject(playerid, 6);
 	return 1;
 }
-stock GetClosestCar(playerid, Float:dist)
-{ 
-	new Float:x, Float:y, Float:z; 
-	for(new i = 0; i < MAX_VEHICLES; i++)
-	{ 
-		if(GetVehicleModel(i) == 0) continue;
-		GetVehiclePos(i, x, y, z); 
-		if(IsPlayerInRangeOfPoint(playerid, dist, x, y, z)) 
-		return i;
-	}
-	return -1; 
-}
-stock GetPlayerTurn(playerid, &Float:x, &Float:y, &Float:z, Float:distance, turn)
-{
-	new Float:angle, Float:dis;
-	dis = dis/2 - distance;
-	GetPlayerPos(playerid, x, y, z);
-	GetPlayerFacingAngle(playerid, angle);
-	x += (dis * floatsin(-angle+turn, degrees));
-	y += (dis * floatcos(-angle+turn, degrees));
-	return 1;
-}
