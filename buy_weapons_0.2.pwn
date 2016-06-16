@@ -54,12 +54,6 @@ static const
     };
 stock BuyWeapons(playerid, weaponid)
 {
-    new weapons[13][2];
-    for (new i = 0; i < 13; i++)
-    {
-        GetPlayerWeaponData(playerid, i, weapons[i][0], weapons[i][1]);
-        if(weapons[i][0] == weaponid) return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
-    }
     mn_weaponid{playerid} = weaponid; 
     PlayerWeapon(playerid);
     static const str[] = "Оружие: \t\t\t%s\n\nКалибр: \t\t\t%s\nПатронов в обойме: \t\t%i\nДальность стрельбы: \t\t%s\nЦена: \t\t\t\t$%i";
@@ -79,6 +73,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     {
         if(response)
         {
+            new weapons[13][2];
+            for (new i = 0; i < 13; i++)
+            {
+                GetPlayerWeaponData(playerid, i, weapons[i][0], weapons[i][1]);
+                if(weapons[i][0] == mn_weaponid{playerid}) return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
+            }        
             if(GetPlayerMoney(playerid) < mn_price[playerid]) return SendClientMessage(playerid, 0xAA3333AA, !"У Вас недостаточно средств");
             GivePlayerMoney(playerid, -mn_price[playerid]);
             GivePlayerWeapon(playerid, mn_weaponid{playerid}, mn_ammunition{playerid});
