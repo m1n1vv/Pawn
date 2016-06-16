@@ -54,6 +54,12 @@ static const
     };
 stock BuyWeapons(playerid, weaponid)
 {
+    new weapons[13][2];
+    for (new i = 0; i < 13; i++)
+    {
+        GetPlayerWeaponData(playerid, i, weapons[i][0], weapons[i][1]);
+        if(weapons[i][0] == weaponid) return SendClientMessage(playerid, 0xAA3333AA, "У Вас уже есть это оружие");
+    }
     mn_weaponid{playerid} = weaponid; 
     PlayerWeapon(playerid);
     static const str[] = "Оружие: \t\t\t%s\n\nКалибр: \t\t\t%s\nПатронов в обойме: \t\t%i\nДальность стрельбы: \t\t%s\nЦена: \t\t\t\t$%i";
