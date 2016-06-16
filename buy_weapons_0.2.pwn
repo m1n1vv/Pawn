@@ -58,7 +58,7 @@ stock BuyWeapons(playerid, weaponid)
     for (new i = 0; i < 13; i++)
     {
         GetPlayerWeaponData(playerid, i, weapons[i][0], weapons[i][1]);
-        if(weapons[i][0] == weaponid) return SendClientMessage(playerid, 0xAA3333AA, "У Вас уже есть это оружие");
+        if(weapons[i][0] == weaponid) return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
     }
     mn_weaponid{playerid} = weaponid; 
     PlayerWeapon(playerid);
