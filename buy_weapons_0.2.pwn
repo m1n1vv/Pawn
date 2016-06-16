@@ -2,6 +2,7 @@
 static mn_weaponid[MAX_PLAYERS char];
 static mn_ammunition[MAX_PLAYERS char];
 static mn_price[MAX_PLAYERS];
+static weapons[7][2];
 static const
     mn_buystat_weap_name[][] =
     {
@@ -73,7 +74,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     {
         if(response)
         {
-            new weapons[7][2];
             for(new i = 2; i < 7; i++)
             {
                 GetPlayerWeaponData(playerid, i, weapons[i][0], weapons[i][1]);
