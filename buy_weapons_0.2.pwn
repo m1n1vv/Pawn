@@ -73,8 +73,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     {
         if(response)
         {
-            new weapons[13][2];
-            for (new i = 0; i < 13; i++)
+            new weapons[7][2];
+            for(new i = 2; i < 7; i++)
             {
                 GetPlayerWeaponData(playerid, i, weapons[i][0], weapons[i][1]);
                 if(weapons[i][0] == mn_weaponid{playerid}) return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
