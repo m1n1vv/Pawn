@@ -69,18 +69,16 @@ stock
 {
 	mn_weaponid{playerid} = weaponid; 
 	mn_PlayerWeapon(playerid);
-	
 	static const 
 		fmt_str[] = 
 	{
 		"Оружие: \t\t\t%s\n\nКалибр: \t\t\t%s\n\
 		Патронов в обойме: \t\t%i\n\
 		Дальность стрельбы: \t\t%s\n\
-		Цена: \t\t\t\t$%i";	
+		Цена: \t\t\t\t$%i"	
 	};
 	static 
 		str[sizeof(fmt_str) + 15 + 18 + 2 + 12 + 4 -(7+ 6 + 5 + 5 + 6)];
-	
 	format(str, sizeof(str), fmt_str, 
 		mn_buystat_weap_name[weaponid-22], 
 		mn_buystat_caliber[weaponid-22], 
@@ -102,20 +100,16 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 		if  (0 == response)
 			return SendClientMessage(playerid, 0xAA3333AA, !"Покупка отклонена");
-		
 		for (new i = 2; i < 7; i++)
 		{
 			GetPlayerWeaponData(playerid, i, weapons[i][0], weapons[i][1]);
 			if (weapons[i][0] == mn_weaponid{playerid}) 
 				return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
 		}
-		
 		if (GetPlayerMoney(playerid) < mn_price[playerid]) 
 			return SendClientMessage(playerid, 0xAA3333AA, !"У Вас недостаточно средств");
-		
 		GivePlayerMoney(playerid, -mn_price[playerid]);
 		GivePlayerWeapon(playerid, mn_weaponid{playerid}, mn_ammunition{playerid});
-		
 		SendClientMessage(playerid, 0x33AA33AA, !"Вы успешно совершили покупку");
 		return 1;
 	}
