@@ -1,4 +1,6 @@
-#define DIALOG_WEAPONS_ID 18498
+#if !defined DIALOG_WEAPONS_ID
+    #define DIALOG_WEAPONS_ID 18498
+#endif
 static mn_weaponid[MAX_PLAYERS char];
 static mn_ammunition[MAX_PLAYERS char];
 static mn_price[MAX_PLAYERS];
