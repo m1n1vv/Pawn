@@ -58,9 +58,9 @@ static const
 stock BuyWeapons(playerid, weaponid)
 {
     mn_weaponid{playerid} = weaponid; 
-    PlayerWeapon(playerid);
+    mn_PlayerWeapon(playerid);
     static const str[] = "Оружие: \t\t\t%s\n\nКалибр: \t\t\t%s\nПатронов в обойме: \t\t%i\nДальность стрельбы: \t\t%s\nЦена: \t\t\t\t$%i";
-    static string[sizeof str+15+18+2+12+5-(7+6+5+5+6)+1];
+    static string[sizeof str+15+18+2+12+4-(7+6+5+5+6)+1];
     format(string, sizeof string, str, 
         mn_buystat_weap_name[weaponid-22], 
         mn_buystat_caliber[weaponid-22], 
@@ -80,7 +80,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
             {
                 GetPlayerWeaponData(playerid, i, weapons[i][0], weapons[i][1]);
                 if(weapons[i][0] == mn_weaponid{playerid}) return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
-            }        
+            }
             if(GetPlayerMoney(playerid) < mn_price[playerid]) return SendClientMessage(playerid, 0xAA3333AA, !"У Вас недостаточно средств");
             GivePlayerMoney(playerid, -mn_price[playerid]);
             GivePlayerWeapon(playerid, mn_weaponid{playerid}, mn_ammunition{playerid});
@@ -93,8 +93,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
             return 1;
         }
     }
-#if defined mn_OnDialogResponse
-    return mn_OnDialogResponse(playerid, dialogid, response, listitem, inputtext);
+#if defined mn_bw__OnDialogResponse
+    return mn_bw__OnDialogResponse(playerid, dialogid, response, listitem, inputtext);
 #endif
 }
 #if defined _ALS_OnDialogResponse
@@ -102,17 +102,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 #else
     #define _ALS_OnDialogResponse
 #endif
-#define OnDialogResponse mn_OnDialogResponse
-#if defined mn_OnDialogResponse
-forward mn_OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
+#define OnDialogResponse mn_bw__OnDialogResponse
+#if defined mn_bw__OnDialogResponse
+forward mn_bw__OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
 #endif
 public OnPlayerDisconnect(playerid, reason)
 {
     mn_weaponid{playerid} = 0;
     mn_ammunition{playerid} = 0;
     mn_price[playerid] = 0;
-#if defined mn_OnPlayerDisconnect
-    mn_OnPlayerDisconnect(playerid, reason);
+#if defined mn_bw__OnPlayerDisconnect
+    mn_bw__OnPlayerDisconnect(playerid, reason);
 #endif
     return 1;
 }
@@ -121,11 +121,11 @@ public OnPlayerDisconnect(playerid, reason)
 #else
     #define _ALS_OnPlayerDisconnect
 #endif
-#define OnPlayerDisconnect mn_OnPlayerDisconnect
-#if defined mn_OnPlayerDisconnect
-forward mn_OnPlayerDisconnect(playerid, reason);
+#define OnPlayerDisconnect mn_bw__OnPlayerDisconnect
+#if defined mn_bw__OnPlayerDisconnect
+forward mn_bw__OnPlayerDisconnect(playerid, reason);
 #endif
-stock PlayerWeapon(playerid)
+stock mn_PlayerWeapon(playerid)
 {
     switch(mn_weaponid{playerid})
     {
