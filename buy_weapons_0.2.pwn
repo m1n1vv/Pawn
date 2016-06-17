@@ -60,7 +60,7 @@ stock BuyWeapons(playerid, weaponid)
     mn_weaponid{playerid} = weaponid; 
     PlayerWeapon(playerid);
     static const str[] = "Оружие: \t\t\t%s\n\nКалибр: \t\t\t%s\nПатронов в обойме: \t\t%i\nДальность стрельбы: \t\t%s\nЦена: \t\t\t\t$%i";
-    static string[sizeof str+20*3+10+2+5-(7+6+5+5+6)];
+    static string[sizeof str+15+18+2+12+5-(7+6+5+5+6)+1];
     format(string, sizeof string, str, 
         mn_buystat_weap_name[weaponid-22], 
         mn_buystat_caliber[weaponid-22], 
