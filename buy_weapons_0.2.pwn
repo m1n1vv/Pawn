@@ -45,7 +45,6 @@ static const
 		"9x19 мм Парабеллум",
 		"7,62 мм",
 		"7,62 мм"
-
 	},
 	mn_buystat_shooting_range[][] =
 	{
