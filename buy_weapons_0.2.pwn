@@ -99,6 +99,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     return mn_bw__OnDialogResponse(playerid, dialogid, response, listitem, inputtext);
 #endif
 }
+
 #if defined _ALS_OnDialogResponse
     #undef OnDialogResponse
 #else
@@ -119,6 +120,7 @@ public OnPlayerDisconnect(playerid, reason)
 #endif
     return 1;
 }
+
 #if defined _ALS_OnPlayerDisconnect
     #undef OnPlayerDisconnect
 #else
