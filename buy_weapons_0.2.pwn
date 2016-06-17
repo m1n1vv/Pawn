@@ -55,6 +55,7 @@ static const
         "100 метров",
         "100 метров"
     };
+    
 stock BuyWeapons(playerid, weaponid)
 {
     mn_weaponid{playerid} = weaponid; 
@@ -70,6 +71,7 @@ stock BuyWeapons(playerid, weaponid)
     ShowPlayerDialog(playerid, DIALOG_WEAPONS_ID, DIALOG_STYLE_MSGBOX, "Покупка оружия", string, "Купить", "Закрыть");
     return 1;
 }
+
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
     if(dialogid == DIALOG_WEAPONS_ID)
@@ -106,6 +108,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 #if defined mn_bw__OnDialogResponse
 forward mn_bw__OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
 #endif
+
 public OnPlayerDisconnect(playerid, reason)
 {
     mn_weaponid{playerid} = 0;
@@ -125,6 +128,7 @@ public OnPlayerDisconnect(playerid, reason)
 #if defined mn_bw__OnPlayerDisconnect
 forward mn_bw__OnPlayerDisconnect(playerid, reason);
 #endif
+
 stock mn_PlayerWeapon(playerid)
 {
     switch(mn_weaponid{playerid})
