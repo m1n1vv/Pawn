@@ -11,7 +11,8 @@ static
 	mn_weaponid[MAX_PLAYERS char],
 	mn_ammunition[MAX_PLAYERS char],
 	mn_price[MAX_PLAYERS],
-	weapons[7][2];
+	mn_player_weapons[7],
+	mn_player_ammo[7];
 
 static const
 	mn_buystat_weap_name[][] =
@@ -67,55 +68,51 @@ stock
 	BuyWeapons(playerid, weaponid)
 {
 	mn_weaponid{playerid} = weaponid; 
+	weaponid -= 22;
 	mn_PlayerWeapon(playerid);
-	static const 
-		fmt_str[] = 
+	static const fmt_str[] = 
 	{
-		"Оружие: \t\t\t%s\n\nКалибр: \t\t\t%s\n\
+		"Оружие: \t\t\t%s\n\n\
+		Калибр: \t\t\t%s\n\
 		Патронов в обойме: \t\t%i\n\
 		Дальность стрельбы: \t\t%s\n\
 		Цена: \t\t\t\t$%i"	
 	};
 	static 
-		str[sizeof(fmt_str) + 15 + 18 + 2 + 12 + 4 -(7+ 6 + 5 + 5 + 6)];
-	format(str, sizeof(str), fmt_str, 
-		mn_buystat_weap_name[weaponid-22], 
-		mn_buystat_caliber[weaponid-22], 
+		string[sizeof fmt_str+(15+18+2+12+5)-(2*5+14+5)];
+	format(string, sizeof string, fmt_str, 
+		mn_buystat_weap_name[weaponid], 
+		mn_buystat_caliber[weaponid], 
 		mn_ammunition{playerid}, 
-		mn_buystat_shooting_range[weaponid-22], 
+		mn_buystat_shooting_range[weaponid], 
 		mn_price[playerid]
 	);
-	ShowPlayerDialog(playerid, DIALOG_WEAPONS_ID, DIALOG_STYLE_MSGBOX, 
-		"Покупка оружия", 
-		str, 
-		"Купить", "Закрыть"
-	);
+	ShowPlayerDialog(playerid, DIALOG_WEAPONS_ID, DIALOG_STYLE_MSGBOX, "Покупка оружия", string, "Купить", "Закрыть");
 	return 1;
 }
 
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
-	if (dialogid == DIALOG_WEAPONS_ID)
+	if(dialogid == DIALOG_WEAPONS_ID)
 	{
-		if  (0 == response)
+		if(0 == response)
 			return SendClientMessage(playerid, 0xAA3333AA, !"Покупка отклонена");
-		for (new i = 2; i < 7; i++)
+		for(new i = 2; i < 7; i++)
 		{
-			GetPlayerWeaponData(playerid, i, weapons[i][0], weapons[i][1]);
-			if (weapons[i][0] == mn_weaponid{playerid}) 
+			GetPlayerWeaponData(playerid, i, mn_player_weapons[i], mn_player_ammo[i]);
+			if (mn_player_weapons[i] == mn_weaponid{playerid}) 
 				return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
 		}
-		if (GetPlayerMoney(playerid) < mn_price[playerid]) 
+		if(GetPlayerMoney(playerid) < mn_price[playerid]) 
 			return SendClientMessage(playerid, 0xAA3333AA, !"У Вас недостаточно средств");
 		GivePlayerMoney(playerid, -mn_price[playerid]);
 		GivePlayerWeapon(playerid, mn_weaponid{playerid}, mn_ammunition{playerid});
 		SendClientMessage(playerid, 0x33AA33AA, !"Вы успешно совершили покупку");
 		return 1;
 	}
-#if  defined mn_bw__OnDialogResponse
-	mn_bw__OnDialogResponse(playerid, dialogid, response, listitem, inputtext);
-#endif 
-	return 0;
+#if defined mn_bw__OnDialogResponse
+    return mn_bw__OnDialogResponse(playerid, dialogid, response, listitem, inputtext);
+#endif
 }
 #if  defined _ALS_OnDialogResponse
 	#undef OnDialogResponse
@@ -152,28 +149,28 @@ static stock
 {
 	switch(mn_weaponid{playerid})
 	{
-		case 22, 23: mn_ammunition{playerid} = 17;
-		case 24, 27: mn_ammunition{playerid} = 7;
-		case 25, 33, 34: mn_ammunition{playerid} = 1;
-		case 26: mn_ammunition{playerid} = 2;
-		case 28, 31, 32: mn_ammunition{playerid} = 50;
-		case 29, 30: mn_ammunition{playerid} = 30;
+		case WEAPON_COLT45, WEAPON_SILENCED: mn_ammunition{playerid} = 17;
+		case WEAPON_DEAGLE, WEAPON_SHOTGSPA: mn_ammunition{playerid} = 7;
+		case WEAPON_SHOTGUN, WEAPON_RIFLE, WEAPON_SNIPER: mn_ammunition{playerid} = 1;
+		case WEAPON_SAWEDOFF: mn_ammunition{playerid} = 2;
+		case WEAPON_UZI, WEAPON_M4, WEAPON_TEC9: mn_ammunition{playerid} = 50;
+		case WEAPON_MP5, WEAPON_AK47: mn_ammunition{playerid} = 30;
 	}
 	switch(mn_weaponid{playerid})
 	{
-		case 22: mn_price[playerid] = 1720;
-		case 23: mn_price[playerid] = 2135;
-		case 24: mn_price[playerid] = 2476;
-		case 25: mn_price[playerid] = 1459;
-		case 26: mn_price[playerid] = 1928;
-		case 27: mn_price[playerid] = 2836;
-		case 28: mn_price[playerid] = 1838;
-		case 29: mn_price[playerid] = 2382;
-		case 30: mn_price[playerid] = 3718;
-		case 31: mn_price[playerid] = 3967;
-		case 32: mn_price[playerid] = 2593;
-		case 33: mn_price[playerid] = 4391;
-		case 34: mn_price[playerid] = 5628;
+		case WEAPON_COLT45: mn_price[playerid] = 1720;
+		case WEAPON_SILENCED: mn_price[playerid] = 2135;
+		case WEAPON_DEAGLE: mn_price[playerid] = 2476;
+		case WEAPON_SHOTGUN: mn_price[playerid] = 1459;
+		case WEAPON_SAWEDOFF: mn_price[playerid] = 1928;
+		case WEAPON_SHOTGSPA: mn_price[playerid] = 2836;
+		case WEAPON_UZI: mn_price[playerid] = 1838;
+		case WEAPON_MP5: mn_price[playerid] = 2382;
+		case WEAPON_AK47: mn_price[playerid] = 3718;
+		case WEAPON_M4: mn_price[playerid] = 3967;
+		case WEAPON_TEC9: mn_price[playerid] = 2593;
+		case WEAPON_RIFLE: mn_price[playerid] = 4391;
+		case WEAPON_SNIPER: mn_price[playerid] = 5628;
 	}
 	return 1;
 }
