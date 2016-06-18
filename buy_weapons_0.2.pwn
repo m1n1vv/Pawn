@@ -10,9 +10,7 @@
 static
 	mn_weaponid[MAX_PLAYERS char],
 	mn_ammunition[MAX_PLAYERS char],
-	mn_price[MAX_PLAYERS],
-	mn_player_weapons[7],
-	mn_player_ammo[7];
+	mn_price[MAX_PLAYERS];
 
 static const
 	mn_buystat_weap_name[][] =
@@ -64,8 +62,7 @@ static const
 		"100 метров"
 	};
 
-stock 
-	BuyWeapons(playerid, weaponid)
+stock BuyWeapons(playerid, weaponid)
 {
 	mn_weaponid{playerid} = weaponid; 
 	weaponid -= 22;
@@ -85,25 +82,27 @@ stock
 		mn_buystat_caliber[weaponid], 
 		mn_ammunition{playerid}, 
 		mn_buystat_shooting_range[weaponid], 
-		mn_price[playerid]
-	);
+		mn_price[playerid]);
 	ShowPlayerDialog(playerid, DIALOG_WEAPONS_ID, DIALOG_STYLE_MSGBOX, "Покупка оружия", string, "Купить", "Закрыть");
 	return 1;
 }
 
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
-	if(dialogid == DIALOG_WEAPONS_ID)
+	if (dialogid == DIALOG_WEAPONS_ID)
 	{
-		if(0 == response)
+		new
+			mn_player_weapons[7],
+			mn_player_ammo[7];
+		if (0 == response)
 			return SendClientMessage(playerid, 0xAA3333AA, !"Покупка отклонена");
-		for(new i = 2; i < 7; i++)
+		for (new i = 2; i < 7; i++)
 		{
 			GetPlayerWeaponData(playerid, i, mn_player_weapons[i], mn_player_ammo[i]);
-			if (mn_player_weapons[i] == mn_weaponid{playerid}) 
+			if (mn_player_weapons[i] == mn_weaponid{playerid} && mn_player_ammo[i] != 0)
 				return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
 		}
-		if(GetPlayerMoney(playerid) < mn_price[playerid]) 
+		if (GetPlayerMoney(playerid) < mn_price[playerid]) 
 			return SendClientMessage(playerid, 0xAA3333AA, !"У Вас недостаточно средств");
 		GivePlayerMoney(playerid, -mn_price[playerid]);
 		GivePlayerWeapon(playerid, mn_weaponid{playerid}, mn_ammunition{playerid});
@@ -144,8 +143,7 @@ public OnPlayerDisconnect(playerid, reason)
 forward mn_bw__OnPlayerDisconnect(playerid, reason);
 #endif 
 
-static stock 
-	mn_PlayerWeapon(playerid)
+static stock mn_PlayerWeapon(playerid)
 {
 	switch(mn_weaponid{playerid})
 	{
