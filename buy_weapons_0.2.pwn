@@ -1,5 +1,5 @@
 #if  defined MN_BUY_WEAPONS_INCLUDED_
-	#endinput
+	#endinput 
 #endif 
 #define MN_BUY_WEAPONS_INCLUDED_
 
