@@ -11,6 +11,8 @@
 	#define DIALOG_PROOF_OF_PURCHASE DIALOG_WEAPONS_ID+1
 #endif 
 
+#define GetWeaponSlot(%0) mn_weapon_slot_id[(GetPlayerWeapon(%0) == -1)?0:GetPlayerWeapon(%0)]
+
 static
 	mn_weaponid[MAX_PLAYERS char],
 	mn_ammunition[MAX_PLAYERS char],
@@ -66,6 +68,10 @@ static const
 		"100 метров",
 		"100 метров"
 	},
+	mn_weapon_slot_id[] = 
+	{ 
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,3,3,3,4,4,4,5,5,6,6
+	},
 	mn_str_buy[] =
 	{
 		"Оружие: \t\t\t%s\n\n\
@@ -76,9 +82,9 @@ static const
 	},
 	mn_str_res[] =
 	{
-		"Заменить %s на %s?"
+		"У Вас уже есть оружие в этом слоте\n\n\
+		Заменить %s на %s?"
 	};
-
 stock BuyWeapons(playerid, weaponid)
 {
 	mn_weaponid{playerid} = weaponid; 
@@ -100,51 +106,29 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
 	if(dialogid == DIALOG_WEAPONS_ID)
 	{
-		static
-			slot,
-			weaponid;
-
 		new
+			mn_player_slot[7],
 			mn_player_weapons[7],
 			mn_player_ammo[7];
 
 		if (0 == response)
 			return SendClientMessage(playerid, 0xAA3333AA, !"Покупка отклонена");
-
 		for (new i = 2; i < 7; i++)
 		{
 			GetPlayerWeaponData(playerid, i, mn_player_weapons[i], mn_player_ammo[i]);
+			mn_player_slot[i] = mn_weapon_slot_id[mn_player_weapons[i]];
 			if (mn_player_weapons[i] == mn_weaponid{playerid} && mn_player_ammo[i] != 0)
 				return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
-			switch(mn_player_weapons[i])
+			if(mn_player_slot[i] == mn_slot{playerid})
 			{
-				case 22: slot = 2, weaponid = 22;
-				case 23: slot = 2, weaponid = 23;
-				case 24: slot = 2, weaponid = 24;
-				case 25: slot = 3, weaponid = 25;
-				case 26: slot = 3, weaponid = 26;
-				case 27: slot = 3, weaponid = 27;
-				case 28: slot = 4, weaponid = 28;
-				case 29: slot = 4, weaponid = 29;
-				case 32: slot = 4, weaponid = 32;
-				case 30: slot = 5, weaponid = 30;
-				case 31: slot = 5, weaponid = 31;
-				case 33: slot = 6, weaponid = 33;
-				case 34: slot = 6, weaponid = 34;
+				new 
+					string[sizeof mn_str_res+15*2-4];
+				format(string, sizeof string, mn_str_res,
+					mn_buystat_weap_name[mn_player_weapons[i]-22],
+					mn_buystat_weap_name[mn_weaponid{playerid}-22]);
+				SendClientMessage(playerid, 0xAA3333AA, "При подтверждении все патроны старого оружия удалятся");
+				return ShowPlayerDialog(playerid, DIALOG_PROOF_OF_PURCHASE, DIALOG_STYLE_MSGBOX, "Внимание!", string, "Да", "Закрыть");
 			}
-		}
-		if (slot == mn_slot{playerid} && weaponid != mn_weaponid{playerid})
-		{
-
-			new 
-				string[sizeof mn_str_res+15*2-4];
-					
-			format(string, sizeof string, mn_str_res,
-				mn_buystat_weap_name[weaponid - 22],
-				mn_buystat_weap_name[mn_weaponid{playerid} - 22]
-			);
-
-			return ShowPlayerDialog(playerid, DIALOG_PROOF_OF_PURCHASE, DIALOG_STYLE_MSGBOX, "У Вас уже есть оружие в этом слоте!", string, "Да", "Закрыть");
 		}
 		Buy(playerid);
 		return 1;
@@ -234,8 +218,8 @@ static stock Buy(playerid)
 	if (GetPlayerMoney(playerid) < mn_price[playerid]) 
 		return SendClientMessage(playerid, 0xAA3333AA, !"У Вас недостаточно средств");
 	GivePlayerMoney(playerid, -mn_price[playerid]);
-	GivePlayerWeapon(playerid, mn_weaponid{playerid}, 0);
-	SetPlayerAmmo(playerid, mn_weaponid{playerid}, mn_ammunition{playerid});
+	GivePlayerWeapon(playerid, mn_weaponid{playerid}, 1);
+	SetPlayerAmmo(playerid, mn_weaponid{playerid}, mn_ammunition{playerid}-1);
 	SendClientMessage(playerid, 0x33AA33AA, !"Вы успешно совершили покупку");
 	return 1;
 }
