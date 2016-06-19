@@ -134,7 +134,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				case 33: slot = 5, weaponid = 33;
 				case 34: slot = 6, weaponid = 34;
 			}
-			if (slot == mn_slot{playerid})
+			if (slot == mn_slot{playerid} && mn_player_weapons[i] != mn_weaponid{playerid})
 			{
 
 				format(string, sizeof string, str,
