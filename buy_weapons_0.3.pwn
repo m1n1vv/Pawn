@@ -132,19 +132,19 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				case 33: slot = 5, weaponid = 33;
 				case 34: slot = 6, weaponid = 34;
 			}
-			if (slot == mn_slot{playerid} && mn_player_weapons[i] != mn_weaponid{playerid})
-			{
+		}
+		if (slot == mn_slot{playerid} && weaponid != mn_weaponid{playerid})
+		{
 
-				new 
-					string[sizeof mn_str_res+15*2-4];
+			new 
+				string[sizeof mn_str_res+15*2-4];
 					
-				format(string, sizeof string, mn_str_res,
-					mn_buystat_weap_name[weaponid - 22],
-					mn_buystat_weap_name[mn_weaponid{playerid} - 22]
-				);
+			format(string, sizeof string, mn_str_res,
+				mn_buystat_weap_name[weaponid - 22],
+				mn_buystat_weap_name[mn_weaponid{playerid} - 22]
+			);
 
-				return ShowPlayerDialog(playerid, DIALOG_PROOF_OF_PURCHASE, DIALOG_STYLE_MSGBOX, "У Вас уже есть оружие в этом слоте!", string, "Да", "Закрыть");
-			}
+			return ShowPlayerDialog(playerid, DIALOG_PROOF_OF_PURCHASE, DIALOG_STYLE_MSGBOX, "У Вас уже есть оружие в этом слоте!", string, "Да", "Закрыть");
 		}
 		Buy(playerid);
 		return 1;
