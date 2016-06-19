@@ -65,6 +65,18 @@ static const
 		"30-35 метров",
 		"100 метров",
 		"100 метров"
+	},
+	mn_str_buy[] =
+	{
+		"Оружие: \t\t\t%s\n\n\
+		Калибр: \t\t\t%s\n\
+		Патронов в обойме: \t\t%i\n\
+		Дальность стрельбы: \t\t%s\n\
+		Цена: \t\t\t\t$%i"
+	},
+	mn_str_res[] =
+	{
+		"Заменить %s на %s?"
 	};
 
 stock BuyWeapons(playerid, weaponid)
@@ -72,17 +84,9 @@ stock BuyWeapons(playerid, weaponid)
 	mn_weaponid{playerid} = weaponid; 
 	weaponid -= 22;
 	Switch_library(playerid);
-	static const fmt_str[] = 
-	{
-		"Оружие: \t\t\t%s\n\n\
-		Калибр: \t\t\t%s\n\
-		Патронов в обойме: \t\t%i\n\
-		Дальность стрельбы: \t\t%s\n\
-		Цена: \t\t\t\t$%i"	
-	};
 	static 
-		string[sizeof fmt_str+(15+18+2+12+5)-(2*5+14+5)];
-	format(string, sizeof string, fmt_str, 
+		string[sizeof mn_str_buy+(15+18+2+12+5)-(2*5+14+5)];
+	format(string, sizeof string, mn_str_buy, 
 		mn_buystat_weap_name[weaponid], 
 		mn_buystat_caliber[weaponid], 
 		mn_ammunition{playerid}, 
@@ -100,13 +104,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			slot,
 			weaponid;
 
-		static const str[] = 
-		{
-			"Заменить %s на %s?"
-		};
-
 		new
-			string[sizeof str+15*2-4],
 			mn_player_weapons[7],
 			mn_player_ammo[7];
 
@@ -137,7 +135,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if (slot == mn_slot{playerid} && mn_player_weapons[i] != mn_weaponid{playerid})
 			{
 
-				format(string, sizeof string, str,
+				new 
+					string[sizeof mn_str_res+15*2-4];
+					
+				format(string, sizeof string, mn_str_res,
 					mn_buystat_weap_name[weaponid - 22],
 					mn_buystat_weap_name[mn_weaponid{playerid} - 22]
 				);
