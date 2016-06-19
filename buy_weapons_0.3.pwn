@@ -222,4 +222,4 @@ static stock Buy(playerid)
 	SetPlayerAmmo(playerid, mn_weaponid{playerid}, mn_ammunition{playerid}-1);
 	SendClientMessage(playerid, 0x33AA33AA, !"Вы успешно совершили покупку");
 	return 1;
-}
+} 
