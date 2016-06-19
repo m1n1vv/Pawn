@@ -104,7 +104,7 @@ stock BuyWeapons(playerid, weaponid)
 
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
-	if(dialogid == DIALOG_WEAPONS_ID)
+	if (dialogid == DIALOG_WEAPONS_ID)
 	{
 		new
 			mn_player_slot[7],
@@ -119,7 +119,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			mn_player_slot[i] = mn_weapon_slot_id[mn_player_weapons[i]];
 			if (mn_player_weapons[i] == mn_weaponid{playerid} && mn_player_ammo[i] != 0)
 				return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
-			if(mn_player_slot[i] == mn_slot{playerid})
+			if (mn_player_slot[i] == mn_slot{playerid})
 			{
 				new 
 					string[sizeof mn_str_res+15*2-4];
@@ -133,7 +133,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		Buy(playerid);
 		return 1;
 	}
-	else if(dialogid == DIALOG_PROOF_OF_PURCHASE)
+	else if (dialogid == DIALOG_PROOF_OF_PURCHASE)
 	{
 		if (0 == response)
 			return SendClientMessage(playerid, 0xAA3333AA, !"Покупка отклонена");
