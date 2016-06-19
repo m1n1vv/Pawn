@@ -109,9 +109,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		SendClientMessage(playerid, 0x33AA33AA, !"Вы успешно совершили покупку");
 		return 1;
 	}
-#if defined mn_bw__OnDialogResponse
-    return mn_bw__OnDialogResponse(playerid, dialogid, response, listitem, inputtext);
-#endif
+#if  defined mn_bw__OnDialogResponse
+	mn_bw__OnDialogResponse(playerid, dialogid, response, listitem, inputtext);
+#endif 
+	return 0;
 }
 #if  defined _ALS_OnDialogResponse
 	#undef OnDialogResponse
