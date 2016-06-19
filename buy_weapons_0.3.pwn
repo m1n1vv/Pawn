@@ -179,7 +179,7 @@ static stock Switch_library(playerid)
 	{
 		case WEAPON_COLT45, WEAPON_SILENCED: mn_ammunition{playerid} = 17;
 		case WEAPON_DEAGLE, WEAPON_SHOTGSPA: mn_ammunition{playerid} = 7;
-		case WEAPON_SHOTGUN, WEAPON_RIFLE, WEAPON_SNIPER: mn_ammunition{playerid} = 1;
+		case WEAPON_SHOTGUN, WEAPON_RIFLE, WEAPON_SNIPER: mn_ammunition{playerid} = 2;
 		case WEAPON_SAWEDOFF: mn_ammunition{playerid} = 2;
 		case WEAPON_UZI, WEAPON_M4, WEAPON_TEC9: mn_ammunition{playerid} = 50;
 		case WEAPON_MP5, WEAPON_AK47: mn_ammunition{playerid} = 30;
