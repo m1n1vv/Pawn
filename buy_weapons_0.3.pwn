@@ -129,7 +129,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				case 32: slot = 4, weaponid = 32;
 				case 30: slot = 5, weaponid = 30;
 				case 31: slot = 5, weaponid = 31;
-				case 33: slot = 5, weaponid = 33;
+				case 33: slot = 6, weaponid = 33;
 				case 34: slot = 6, weaponid = 34;
 			}
 		}
