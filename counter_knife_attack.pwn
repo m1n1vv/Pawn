@@ -70,15 +70,15 @@ stock GetClosestCar(playerid, Float:dist)
 		Float:x, 
 		Float:y, 
 		Float:z; 
-    for (new i = 0; i < MAX_VEHICLES; i++)
-    { 
-        if (GetVehicleModel(i) == 0) 
-        	continue;
-        GetVehiclePos(i, x, y, z); 
-        if (IsPlayerInRangeOfPoint(playerid, dist, x, y, z)) 
-        	return i;
-    }
-    return -1; 
+	for (new i = 0; i < MAX_VEHICLES; i++)
+	{ 
+	        if (GetVehicleModel(i) == 0) 
+	        	continue;
+		GetVehiclePos(i, x, y, z); 
+		if (IsPlayerInRangeOfPoint(playerid, dist, x, y, z)) 
+	        	return i;
+	}
+	return -1; 
 }
 stock GetPlayerTurn(playerid, &Float:x, &Float:y, &Float:z, Float:distance, turn)
 {
