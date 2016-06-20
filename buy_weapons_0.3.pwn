@@ -177,7 +177,7 @@ static stock GetWeaponInfo(playerid)
 		{
 			17, 17, 7, 1, 2, 7, 50, 30, 30, 50, 50, 1, 1
 		},
-		price[] =
+		price[] = //Цены на оружие
 		{
 			1720, //9mm
 			2135, //Silenced 9mm
