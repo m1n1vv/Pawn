@@ -195,7 +195,7 @@ static stock GetWeaponInfo(playerid)
 		};
 	mn_slot{playerid} = slot[weaponid];
 	mn_ammunition{playerid} = ammunition[weaponid];
-	mn_price[playerid]= price[weaponid];
+	mn_price[playerid] = price[weaponid];
 	return 1;
 }
 
