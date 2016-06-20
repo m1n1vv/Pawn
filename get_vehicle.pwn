@@ -21,7 +21,7 @@ CMD:getveh(playerid, params[])
                                         GetVehiclePos(i, x, y, z);
                                         if(IsPlayerInRangeOfPoint(playerid, params[0], x, y, z))
                                         {
-                                                numberofauto ++;
+                                                numberofauto++;
                                                 SetPlayerMapIcon(playerid, i, x, y, z, 55, 0, MAPICON_LOCAL);
                                         }
                                 }
