@@ -105,7 +105,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			mn_player_slot[i] = mn_weapon_slot_id[mn_player_weapons[i]];
 			if (mn_player_weapons[i] == mn_weaponid{playerid} && mn_player_ammo[i] != 0)
 				return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
-			if (mn_player_slot[i] == mn_slot{playerid} && mn_player_ammo[i] != 0)
+			if (mn_player_slot[i] == mn_slot{playerid})
 			{
 				new 
 					string[sizeof mn_str_res+15*2-4];
