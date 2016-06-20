@@ -11,8 +11,6 @@
 	#define DIALOG_PROOF_OF_PURCHASE DIALOG_WEAPONS_ID+1
 #endif 
 
-#define GetWeaponSlot(%0) mn_weapon_slot_id[(GetPlayerWeapon(%0) == -1)?0:GetPlayerWeapon(%0)]
-
 static
 	mn_weaponid[MAX_PLAYERS char],
 	mn_ammunition[MAX_PLAYERS char],
