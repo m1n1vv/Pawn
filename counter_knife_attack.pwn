@@ -64,7 +64,7 @@ public Knife100HPDO(playerid)
 	RemovePlayerAttachedObject(playerid, 6);
 	return 1;
 }
-stock GetClosestCar(playerid, Float:dist)
+static stock GetClosestCar(playerid, Float:dist)
 { 
 	new 
 		Float:x, 
@@ -80,7 +80,7 @@ stock GetClosestCar(playerid, Float:dist)
 	}
 	return -1; 
 }
-stock GetPlayerTurn(playerid, &Float:x, &Float:y, &Float:z, Float:distance, turn)
+static stock GetPlayerTurn(playerid, &Float:x, &Float:y, &Float:z, Float:distance, turn)
 {
 	new 
 		Float:angle, 
