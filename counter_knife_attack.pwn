@@ -13,12 +13,12 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 #if defined mn_knife__OnPlayerKeyStateChange
 	mn_knife__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
 #endif
-    return 1;
+	return 1;
 }
 #if defined _ALS_OnPlayerKeyStateChange
-    #undef OnPlayerKeyStateChange
+	#undef OnPlayerKeyStateChange
 #else
-    #define _ALS_OnPlayerKeyStateChange
+	#define _ALS_OnPlayerKeyStateChange
 #endif
 #define OnPlayerKeyStateChange mn_knife__OnPlayerKeyStateChange
 #if  defined mn_knife__OnPlayerKeyStateChange
@@ -51,7 +51,7 @@ public Knife100HP(playerid)
 #endif
 	{
 		if (IsPlayerInRangeOfPoint(i, 3.0, p[0], p[1], p[2]))
-            PlayAudioStreamForPlayer(i, "http://tscars.narod.ru/sounds/knife1.mp3", p[0], p[1], p[2], 5.0, true);
+			PlayAudioStreamForPlayer(i, "http://tscars.narod.ru/sounds/knife1.mp3", p[0], p[1], p[2], 5.0, true);
 		GetPlayerTurn(playerid, p[0], p[1], p[2], 1.0, 180);
 		if (!IsPlayerConnected(i) || i == playerid) 
 			continue;
