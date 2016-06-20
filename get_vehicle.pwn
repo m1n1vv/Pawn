@@ -1,6 +1,7 @@
 CMD:getveh(playerid, params[])
 {
-        if(sscanf(params, !"d", params[0])) return SendClientMessage(playerid, 0xFF4530FF, !"[Подсказка]: /r [Радиус]");
+        if (sscanf(params, !"d", params[0])) 
+                return SendClientMessage(playerid, 0xFF4530FF, !"[Подсказка]: /r [Радиус]");
         static const str_y[] = "[Данные получены]... {c8d8e3}В радиусе %i м. обнаружено %i транспортных средств... {48aacb}[Радар]: Транспорт обнаружен";
         static const str_n[] = "[Данные получены]... {c8d8e3}В радиусе %i м. транспортных средств не обнаружено";
         new 
