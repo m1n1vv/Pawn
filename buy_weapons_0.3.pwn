@@ -84,7 +84,7 @@ stock BuyWeapons(playerid, weaponid)
 		mn_ammunition{playerid}, 
 		mn_buystat_shooting_range[weaponid], 
 		mn_price[playerid]);
-	ShowPlayerDialog(playerid, DIALOG_WEAPONS_ID, DIALOG_STYLE_MSGBOX, "Покупка оружия", string, "Купить", "Закрыть");
+	ShowPlayerDialog(playerid, DIALOG_WEAPONS_ID, DIALOG_STYLE_MSGBOX, !"Покупка оружия", string, !"Купить", !"Закрыть");
 	return 1;
 }
 
@@ -114,7 +114,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					mn_old_weapon_name,
 					mn_new_weapon_name);
 				SendClientMessage(playerid, 0xAA3333AA, !"При подтверждении все патроны старого оружия удалятся");
-				return ShowPlayerDialog(playerid, DIALOG_PROOF_OF_PURCHASE, DIALOG_STYLE_MSGBOX, "Внимание!", string, "Да", "Закрыть");
+				return ShowPlayerDialog(playerid, DIALOG_PROOF_OF_PURCHASE, DIALOG_STYLE_MSGBOX, !"Внимание!", string, !"Да", !"Закрыть");
 			}
 		}
 		Buy(playerid);
