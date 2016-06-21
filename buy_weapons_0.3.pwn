@@ -171,7 +171,7 @@ static stock GetWeaponInfo(playerid)
 	static const
 		slot[] =
 		{
-			2,2,2,3,3,3,4,4,5,5,4,6,6
+			2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 4, 6, 6
 		},
 		ammunition[] = 
 		{
