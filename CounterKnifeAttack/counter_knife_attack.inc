@@ -1,3 +1,10 @@
+#if  defined MN_COUNTER_KNIFE_ATTACK_INCLUDED_
+    #endinput
+#endif 
+#define MN_COUNTER_KNIFE_ATTACK_INCLUDED_
+
+CounterKnifeAttack
+
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 { 
 	if ((newkeys & 16) && GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
