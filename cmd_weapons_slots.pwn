@@ -16,7 +16,7 @@ CMD:test(playerid)
                 Player_Slots[i] = Slot_ID[Player_Weapons[i]];
                 format(string, sizeof string, "%d", Player_Slots[i]);
                 printf(string);
-                if (Player_Slots[i] == 6) 
+                if (Player_Slots[i] == 6)
                         return printf("This is the sixth slot");
         }
         return 1;
