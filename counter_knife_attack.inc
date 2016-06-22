@@ -1,4 +1,4 @@
-public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
+public OnPlayerKeyStateChange(playerid, newkeys, oldkeys) 
 { 
 	if ((newkeys & 16) && GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
 	{
