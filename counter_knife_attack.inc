@@ -27,9 +27,9 @@ Knife100HP(playerid);
 Knife100HP(playerid)
 {
 	new 
-    	Float:health;
+    		Float:health;
 	GetPlayerHealth(playerid, health);
-	if(health <= 10) 
+	if (health <= 10) 
 		return 1;
 	new 
 		vehid;	
@@ -44,7 +44,7 @@ Knife100HP(playerid)
 	new Float:p[3];
 	GetPlayerPos(playerid, p[0], p[1], p[2]);
 #if defined foreach
-	foreach(Player, i)
+	foreach (Player, i)
 #elseif defined GetPlayerPoolSize
 	for (new i = GetPlayerPoolSize(); --i != 0;)
 #else
