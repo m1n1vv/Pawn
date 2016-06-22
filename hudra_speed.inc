@@ -1,4 +1,4 @@
-static 
+static
 	BarrierInfor[MAX_PLAYERS],
 	Proof_1[MAX_PLAYERS char], 
 	Proof_2[MAX_PLAYERS char], 
