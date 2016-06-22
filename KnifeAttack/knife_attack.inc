@@ -1,7 +1,7 @@
-#if  defined MN_COUNTER_KNIFE_ATTACK_INCLUDED_
+#if  defined MN_KNIFE_ATTACK_INCLUDED_
     #endinput
 #endif 
-#define MN_COUNTER_KNIFE_ATTACK_INCLUDED_
+#define MN_KNIFE_ATTACK_INCLUDED_
 
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 { 
