@@ -1,4 +1,4 @@
-new pickup; 
+new pickup;
 
 public OnGameModeInit()
 {
