@@ -1,5 +1,3 @@
-forward Knife100HP(playerid);
-forward Knife100HPDO(playerid);
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys) 
 { 
 	if ((newkeys & 16) && GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
@@ -7,7 +5,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		if (GetPVarInt(playerid, "Knife") > gettime()) 
 			return 1;
 		SetPVarInt(playerid, "Knife", gettime()+2);
-		SetTimerEx("Knife100HP", 0, false, "i", playerid);
+		SetTimerEx("@Knife100HP", 0, false, "i", playerid);
 		return 1;
 	}
 #if defined mn_knife__OnPlayerKeyStateChange
@@ -24,7 +22,9 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 #if  defined mn_knife__OnPlayerKeyStateChange
 forward  mn_knife__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
 #endif
-public Knife100HP(playerid)
+
+Knife100HP(playerid);
+Knife100HP(playerid)
 {
 	new 
     	Float:health;
@@ -32,14 +32,15 @@ public Knife100HP(playerid)
 	if(health <= 10) 
 		return 1;
 	new 
-		vehid = GetClosestCar(playerid, 5.0);
+		vehid;	
+	vehid = GetClosestCar(playerid, 5.0);
 	for (new i = 0; i < MAX_VEHICLES; i++) 
 		if (i == vehid) 
 			return 1;
 	SetPlayerArmedWeapon(playerid, 0);
 	ApplyAnimation(playerid, "ped", "FightA_1", 4.0, 0, 0, 0, 0, 0, 1);
 	SetPlayerAttachedObject(playerid, 6, 335, 5, 0.17, 0.0, 0.0, 0.0, 180.0, 0.0);
-	SetTimerEx("Knife100HPDO", 650, false, "i", playerid);
+	SetTimerEx("@Knife100HPDO", 650, false, "i", playerid);
 	new Float:p[3];
 	GetPlayerPos(playerid, p[0], p[1], p[2]);
 #if defined foreach
@@ -59,11 +60,14 @@ public Knife100HP(playerid)
 	}
 	return 1;
 }
-public Knife100HPDO(playerid)
+
+@Knife100HPDO(playerid);
+@Knife100HPDO(playerid)
 {
 	RemovePlayerAttachedObject(playerid, 6);
 	return 1;
 }
+
 static stock GetClosestCar(playerid, Float:dist)
 { 
 	new 
@@ -80,6 +84,7 @@ static stock GetClosestCar(playerid, Float:dist)
 	}
 	return -1; 
 }
+
 static stock GetPlayerTurn(playerid, &Float:x, &Float:y, &Float:z, Float:distance, turn)
 {
 	new 
