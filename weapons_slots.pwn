@@ -1,4 +1,4 @@
-CMD:test(playerid) 
+CMD:test(playerid)
 {
         static const
                 Slot_ID[] =
