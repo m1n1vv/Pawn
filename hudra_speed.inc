@@ -36,14 +36,14 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 		return 1;
 	}
 #if defined mn_h__OnPlayerStateChange
-    mn_h__OnPlayerStateChange(playerid, newstate, oldstate);
+	mn_h__OnPlayerStateChange(playerid, newstate, oldstate);
 #endif
     return 1;
 }
 #if defined _ALS_OnPlayerStateChange
-    #undef OnPlayerStateChange
+	#undef OnPlayerStateChange
 #else
-    #define _ALS_OnPlayerStateChange
+	#define _ALS_OnPlayerStateChange
 #endif
 #define OnPlayerStateChange mn_h__OnPlayerStateChange
 #if defined mn_h__OnPlayerStateChange
@@ -68,18 +68,18 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					StopBar{playerid} = 2;
 					N1{playerid} = true;
 				}
-        	}
-        }
-    }
+			}
+		}
+	}
 #if defined mn_h__OnPlayerKeyStateChange
-    mn_h__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
+	mn_h__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
 #endif
     return 1;
 }
 #if defined _ALS_OnPlayerKeyStateChange
-    #undef OnPlayerKeyStateChange
+	#undef OnPlayerKeyStateChange
 #else
-    #define _ALS_OnPlayerKeyStateChange
+	#define _ALS_OnPlayerKeyStateChange
 #endif
 #define OnPlayerKeyStateChange mn_h__OnPlayerKeyStateChange
 #if defined mn_h__OnPlayerKeyStateChange
@@ -96,14 +96,14 @@ public OnPlayerDeath(playerid, killerid, reason)
 	N2{playerid} = false;
 	KillTimer(BarrierInfor[playerid]);
 #if defined mn_h__OnPlayerDeath
-    mn_h__OnPlayerDeath(playerid, killerid, reason);
+	mn_h__OnPlayerDeath(playerid, killerid, reason);
 #endif
     return 1;
 }
 #if defined _ALS_OnPlayerDeath
-    #undef OnPlayerDeath
+	#undef OnPlayerDeath
 #else
-    #define _ALS_OnPlayerDeath
+	#define _ALS_OnPlayerDeath
 #endif
 #define OnPlayerDeath mn_h__OnPlayerDeath
 #if defined mn_h__OnPlayerDeath
@@ -120,14 +120,14 @@ public OnPlayerDisconnect(playerid, reason)
 	N1{playerid} = false;
 	N2{playerid} = false;
 #if defined mn_h__OnPlayerDisconnect
-    mn_h__OnPlayerDisconnect(playerid, reason);
+	mn_h__OnPlayerDisconnect(playerid, reason);
 #endif
     return 1;
 }
 #if defined _ALS_OnPlayerDisconnect
-    #undef OnPlayerDisconnect
+	#undef OnPlayerDisconnect
 #else
-    #define _ALS_OnPlayerDisconnect
+	#define _ALS_OnPlayerDisconnect
 #endif
 #define OnPlayerDisconnect mn_h__OnPlayerDisconnect
 #if defined mn_h__OnPlayerDisconnect
@@ -170,61 +170,63 @@ forward mn_h__OnPlayerDisconnect(playerid, reason);
 		}
 		if (StopBar{playerid} == 1)
 		{
-            new 
-            	Float:x,
-            	Float:y,
-            	Float:z,
-            	Float:a,
-            	Float:dist = 5.0; //новая скорость
-            new
-            	hyd;
-            hyd = GetPlayerVehicleID(playerid);
-            GetVehiclePos(hyd, x, y, z);
-            GetVehicleZAngle(hyd, a);
-            SetVehiclePos(hyd, x + dist * -floatsin(a, degrees), y + dist * floatcos(a, degrees), z);
+			new 
+				Float:x,
+				Float:y,
+				Float:z,
+				Float:a,
+				Float:dist = 5.0; //новая скорость
+			new
+				hyd;
+			hyd = GetPlayerVehicleID(playerid);
+			GetVehiclePos(hyd, x, y, z);
+			GetVehicleZAngle(hyd, a);
+			SetVehiclePos(hyd, x + dist * -floatsin(a, degrees), y + dist * floatcos(a, degrees), z);
 			Proof_2{playerid} = 1;
 		}
 		if (StopBar{playerid} == 2)
+		{
 			if (Proof_2{playerid} == 1 && N1{playerid} == true) 
 			{
 				new
-            		hyd;
-            	hyd = GetPlayerVehicleID(playerid);
+					hyd;
+            			hyd = GetPlayerVehicleID(playerid);
 				SetVehicleSpeed(hyd, 500);
 			}
+		}
 	}
 	return 1;
 }
 
 stock SpeedVehicle(playerid)
 {
-    new 
-    	Float:x,
-    	Float:y,
-    	Float:z,
-    	Float:a;
-    if (IsPlayerInAnyVehicle(playerid)) 
+	new 
+		Float:x,
+		Float:y,
+		Float:z,
+		Float:a;
+	if (IsPlayerInAnyVehicle(playerid)) 
 		GetVehicleVelocity(GetPlayerVehicleID(playerid), x, y, z);
-    else 
-    	GetPlayerVelocity(playerid, x, y, z);
-    a = floatsqroot(floatpower(floatabs(x), 2.0) + floatpower(floatabs(y), 2.0) + floatpower(floatabs(z), 2.0)) * 100.3;
-    return floatround(a);
+	else 
+	GetPlayerVelocity(playerid, x, y, z);
+	a = floatsqroot(floatpower(floatabs(x), 2.0) + floatpower(floatabs(y), 2.0) + floatpower(floatabs(z), 2.0)) * 100.3;
+	return floatround(a);
 }
 
 stock SetVehicleSpeed(vehicleid, Float:speed)
 {
-    new 
-    	Float:x1, 
-    	Float:y1, 
-    	Float:z1, 
-    	Float:x2, 
-    	Float:y2, 
-    	Float:z2, 
-    	Float:a;
-    GetVehicleVelocity(vehicleid, x1, y1, z1);
-    GetVehiclePos(vehicleid, x2, y2, z2);
-    GetVehicleZAngle(vehicleid, a); a = 360 - a;
-    x1 = (floatsin(a, degrees) * (speed/100) + floatcos(a, degrees) * 0 + x2) - x2;
-    y1 = (floatcos(a, degrees) * (speed/100) + floatsin(a, degrees) * 0 + y2) - y2;
-    SetVehicleVelocity(vehicleid, x1, y1, z1);
+	new 
+		Float:x1, 
+		Float:y1, 
+		Float:z1, 
+		Float:x2, 
+		Float:y2, 
+		Float:z2, 
+		Float:a;
+	GetVehicleVelocity(vehicleid, x1, y1, z1);
+	GetVehiclePos(vehicleid, x2, y2, z2);
+	GetVehicleZAngle(vehicleid, a); a = 360 - a;
+	x1 = (floatsin(a, degrees) * (speed/100) + floatcos(a, degrees) * 0 + x2) - x2;
+	y1 = (floatcos(a, degrees) * (speed/100) + floatsin(a, degrees) * 0 + y2) - y2;
+	SetVehicleVelocity(vehicleid, x1, y1, z1);
 }
