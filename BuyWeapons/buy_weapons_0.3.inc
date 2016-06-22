@@ -75,7 +75,7 @@ stock BuyWeapons(playerid, weaponid)
     weaponid -= 22;
     GetWeaponInfo(playerid);
     static 
-        string[sizeof mn_str_buy+(MAX_WEAPON_NAME+19+2+13+5)-(8+7+6+6+8)];
+        string[sizeof mn_str_buy+(MAX_WEAPON_NAME+19+2+13+10)-(8+7+6+6+8)];
     GetWeaponName(mn_weaponid{playerid}, mn_new_weapon_name, sizeof(mn_new_weapon_name));
     format(string, sizeof string, mn_str_buy, 
         mn_new_weapon_name, 
