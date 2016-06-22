@@ -1,3 +1,8 @@
+#if  defined MN_HYDRA_SPEED_INCLUDED_
+    #endinput
+#endif 
+#define MN_HYDRA_SPEED_INCLUDED_
+
 static
 	BarrierInfor[MAX_PLAYERS],
 	Proof_1[MAX_PLAYERS char], 
