@@ -6,7 +6,7 @@ static
 	StopBar[MAX_PLAYERS char],
 	bool:N1[MAX_PLAYERS char], 
 	bool:N2[MAX_PLAYERS char],
-	HrSpeed[MAX_PLAYERS char];
+	HrSpeed[MAX_PLAYERS char]; 
 
 public OnPlayerStateChange(playerid, newstate, oldstate)
 {
