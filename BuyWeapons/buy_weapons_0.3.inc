@@ -109,7 +109,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
                 new
                     mn_str_res[47] = !"У Вас уже есть оружие в этом слоте\nПри подтверждении все патроны старого оружия удалятся\n\n";
                 new 
-                    string[18+(15-2)*2+1];
+                    string[19+(MAX_WEAPON_NAME-2)*2];
                 GetWeaponName(mn_player_weapons[i], mn_old_weapon_name, sizeof mn_old_weapon_name);
                 format(string, sizeof string, "Заменить %s на %s?",
                     mn_old_weapon_name,
