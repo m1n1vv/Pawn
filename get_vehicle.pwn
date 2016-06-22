@@ -1,4 +1,4 @@
-CMD:getveh(playerid, params[]) 
+CMD:getveh(playerid, params[])
 {
         if (sscanf(params, !"d", params[0]))
                 return SendClientMessage(playerid, 0xFF4530FF, !"[Подсказка]: /r [Радиус]");
