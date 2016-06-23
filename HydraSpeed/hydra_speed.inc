@@ -203,7 +203,7 @@ forward mn_h__OnPlayerDisconnect(playerid, reason);
 	return 1;
 }
 
-stock SpeedVehicle(playerid)
+static stock SpeedVehicle(playerid)
 {
 	new 
 		Float:x,
@@ -218,7 +218,7 @@ stock SpeedVehicle(playerid)
 	return floatround(a);
 }
 
-stock SetVehicleSpeed(vehicleid, Float:speed)
+static stock SetVehicleSpeed(vehicleid, Float:speed)
 {
 	new 
 		Float:x1, 
