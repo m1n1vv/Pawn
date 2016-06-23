@@ -89,35 +89,35 @@ stock BuyWeapons(playerid, weaponid)
 
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
-    if (dialogid == DIALOG_WEAPONS_ID)
-    {
-        new
-		mn_player_slot[7],
-		mn_player_weapons[7],
-		mn_player_ammo[7];
-        if (0 == response)
-		return SendClientMessage(playerid, 0xAA3333AA, !"Покупка отклонена");
-	GetWeaponName(mn_weaponid{playerid}, mn_new_weapon_name, sizeof mn_new_weapon_name);
-	for (new i = 2; i < 7; i++)
-        {
-            	GetPlayerWeaponData(playerid, i, mn_player_weapons[i], mn_player_ammo[i]);
-            	mn_player_slot[i] = mn_weapon_slot_id[mn_player_weapons[i]];
-            	if (mn_player_weapons[i] == mn_weaponid{playerid} && mn_player_ammo[i] != 0)
-                	return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
-            	if (mn_player_slot[i] == mn_slot{playerid} && mn_player_weapons[i] != mn_weaponid{playerid} && mn_player_ammo[i] != 0)
-		{
-			new
-				mn_str_res[47] = !"У Вас уже есть оружие в этом слоте\nПри подтверждении все патроны старого оружия удалятся\n\n";
-			new 
-				string[19+(MAX_WEAPON_NAME-2)*2];
-			GetWeaponName(mn_player_weapons[i], mn_old_weapon_name, sizeof mn_old_weapon_name);
-			format(string, sizeof string, "Заменить %s на %s?",
-				mn_old_weapon_name,
-				mn_new_weapon_name);
-                	strcat(mn_str_res, string);
-                	return ShowPlayerDialog(playerid, DIALOG_PROOF_OF_PURCHASE, DIALOG_STYLE_MSGBOX, !"Внимание!", mn_str_res, !"Да", !"Закрыть");
-            	}
-        }
+	if (dialogid == DIALOG_WEAPONS_ID)
+	{
+	        new
+			mn_player_slot[7],
+			mn_player_weapons[7],
+			mn_player_ammo[7];
+	        if (0 == response)
+			return SendClientMessage(playerid, 0xAA3333AA, !"Покупка отклонена");
+		GetWeaponName(mn_weaponid{playerid}, mn_new_weapon_name, sizeof mn_new_weapon_name);
+		for (new i = 2; i < 7; i++)
+	        {
+	            	GetPlayerWeaponData(playerid, i, mn_player_weapons[i], mn_player_ammo[i]);
+	            	mn_player_slot[i] = mn_weapon_slot_id[mn_player_weapons[i]];
+	            	if (mn_player_weapons[i] == mn_weaponid{playerid} && mn_player_ammo[i] != 0)
+	                	return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
+	            	if (mn_player_slot[i] == mn_slot{playerid} && mn_player_weapons[i] != mn_weaponid{playerid} && mn_player_ammo[i] != 0)
+			{
+				new
+					mn_str_res[47] = !"У Вас уже есть оружие в этом слоте\nПри подтверждении все патроны старого оружия удалятся\n\n";
+				new 
+					string[19+(MAX_WEAPON_NAME-2)*2];
+				GetWeaponName(mn_player_weapons[i], mn_old_weapon_name, sizeof mn_old_weapon_name);
+				format(string, sizeof string, "Заменить %s на %s?",
+					mn_old_weapon_name,
+					mn_new_weapon_name);
+	                	strcat(mn_str_res, string);
+	                	return ShowPlayerDialog(playerid, DIALOG_PROOF_OF_PURCHASE, DIALOG_STYLE_MSGBOX, !"Внимание!", mn_str_res, !"Да", !"Закрыть");
+	            	}
+	        }
         	Buy(playerid);
 		return 1;
 	}
