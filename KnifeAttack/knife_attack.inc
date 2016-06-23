@@ -28,8 +28,8 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 forward  mn_knife__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
 #endif
 
-Knife100HP(playerid);
-Knife100HP(playerid)
+@Knife100HP(playerid);
+@Knife100HP(playerid)
 {
 	new 
     		Float:health;
