@@ -44,7 +44,7 @@ Knife100HP(playerid)
 			return 1;
 	SetPlayerArmedWeapon(playerid, 0);
 	ApplyAnimation(playerid, "ped", "FightA_1", 4.0, 0, 0, 0, 0, 0, 1);
-	SetPlayerAttachedObject(playerid, 6, 335, 5, 0.17, 0.0, 0.0, 0.0, 180.0, 0.0);
+	SetPlayerAttachedObject(playerid, 9, 335, 5, 0.17, 0.0, 0.0, 0.0, 180.0, 0.0);
 	SetTimerEx("@Knife100HPDO", 650, false, "i", playerid);
 	new Float:p[3];
 	GetPlayerPos(playerid, p[0], p[1], p[2]);
@@ -69,7 +69,7 @@ Knife100HP(playerid)
 @Knife100HPDO(playerid);
 @Knife100HPDO(playerid)
 {
-	RemovePlayerAttachedObject(playerid, 6);
+	RemovePlayerAttachedObject(playerid, 9);
 	return 1;
 }
 
