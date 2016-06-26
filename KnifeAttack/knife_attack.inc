@@ -8,13 +8,13 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	if ((newkeys & 16) && GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
 	{
 		if (GetPVarInt(playerid, "Knife") > gettime()) 
-			return 1;
+			return 0;
 		SetPVarInt(playerid, "Knife", gettime()+2);
-		SetTimerEx("@Knife100HP", 0, false, "i", playerid);
+		Knife100HP(playerid);
 		return 1;
 	}
-#if defined mn_knife__OnPlayerKeyStateChange
-	mn_knife__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
+#if defined mn_k__OnPlayerKeyStateChange
+	mn_k__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
 #endif
 	return 1;
 }
@@ -23,47 +23,44 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 #else
 	#define _ALS_OnPlayerKeyStateChange
 #endif
-#define OnPlayerKeyStateChange mn_knife__OnPlayerKeyStateChange
-#if  defined mn_knife__OnPlayerKeyStateChange
-forward  mn_knife__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
+#define OnPlayerKeyStateChange mn_k__OnPlayerKeyStateChange
+#if  defined mn_k__OnPlayerKeyStateChange
+forward  mn_k__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
 #endif
 
-@Knife100HP(playerid);
-@Knife100HP(playerid)
+static stock Knife100HP(playerid)
 {
 	new 
-    		Float:health;
+		Float:x,
+		Float:y,
+		Float:z,
+		Float:health;
 	GetPlayerHealth(playerid, health);
 	if (health <= 10) 
-		return 1;
+		return 0;
 	new 
-		vehid;	
-	vehid = GetClosestCar(playerid, 5.0);
-	for (new i = 0; i < MAX_VEHICLES; i++) 
-		if (i == vehid) 
-			return 1;
-	SetPlayerArmedWeapon(playerid, 0);
+		closest_veh = GetClosestVehicle(playerid, 3.0);
+	if (closest_veh != INVALID_VEHICLE_ID) 
+		return 0;
+	if (GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
+		return 0;
 	ApplyAnimation(playerid, "ped", "FightA_1", 4.0, 0, 0, 0, 0, 0, 1);
 	SetPlayerAttachedObject(playerid, 9, 335, 5, 0.17, 0.0, 0.0, 0.0, 180.0, 0.0);
 	SetTimerEx("@Knife100HPDO", 650, false, "i", playerid);
-	new Float:p[3];
-	GetPlayerPos(playerid, p[0], p[1], p[2]);
-#if defined foreach
-	foreach (Player, i)
-#elseif defined GetPlayerPoolSize
-	for (new i = GetPlayerPoolSize(); --i != 0;)
-#else
-	for (new i = 0; ++i != MAX_PLAYERS;)
-#endif
+	PlayAudioStreamForPlayer(playerid, "http://tscars.narod.ru/sounds/knife1.mp3");
+	for (new i = 0, j = GetPlayerPoolSize(); i <= j; i++)
 	{
-		if (IsPlayerInRangeOfPoint(i, 3.0, p[0], p[1], p[2]))
-			PlayAudioStreamForPlayer(i, "http://tscars.narod.ru/sounds/knife1.mp3", p[0], p[1], p[2], 5.0, true);
-		GetPlayerTurn(playerid, p[0], p[1], p[2], 1.0, 180);
-		if (!IsPlayerConnected(i) || i == playerid) 
+		GetPlayerPos(i, x, y, z);
+		if (!IsPlayerInRangeOfPoint(playerid, 3.0, x, y, z))
 			continue;
-		return SetPlayerHealth(i, random(100));
+		if (!IsPlayerConnected(i) || i == playerid)
+			continue;
+		PlayAudioStreamForPlayer(i, "http://tscars.narod.ru/sounds/knife1.mp3", x, y, z, 5.0, true);
+		SetPlayerHealth(i, 0);
+		SetPlayerLook(playerid, x, y);
+		break;
 	}
-	return 1;
+	return 1;																																																								
 }
 
 @Knife100HPDO(playerid);
@@ -73,32 +70,32 @@ forward  mn_knife__OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
 	return 1;
 }
 
-static stock GetClosestCar(playerid, Float:dist)
-{ 
-	new 
-		Float:x, 
-		Float:y, 
-		Float:z; 
-	for (new i = 0; i < MAX_VEHICLES; i++)
-	{ 
-	        if (GetVehicleModel(i) == 0) 
-	        	continue;
-		GetVehiclePos(i, x, y, z); 
-		if (IsPlayerInRangeOfPoint(playerid, dist, x, y, z)) 
-	        	return i;
-	}
-	return -1; 
+static stock SetPlayerLook(playerid, Float:x, Float:y)
+{
+    new 
+	    Float:pos_x, 
+	    Float:pos_y, 
+	    Float:angle;
+    GetPlayerPos(playerid, pos_x, pos_y, angle);
+    angle = atan2(y-pos_y, x-pos_x)-90.0;
+    SetPlayerFacingAngle(playerid, angle);
+    return 1;
 }
 
-static stock GetPlayerTurn(playerid, &Float:x, &Float:y, &Float:z, Float:distance, turn)
+static stock GetClosestVehicle(playerid, Float:radius = 3.0)
 {
 	new 
-		Float:angle, 
-		Float:dis;
-	dis = dis/2 - distance;
-	GetPlayerPos(playerid, x, y, z);
-	GetPlayerFacingAngle(playerid, angle);
-	x += (dis * floatsin(-angle+turn, degrees));
-	y += (dis * floatcos(-angle+turn, degrees));
-	return 1;
+		Float:px, 
+		Float:py, 
+		Float:pz;
+	GetPlayerPos(playerid, px, py, pz);
+	for (new i = 1, j = GetVehiclePoolSize(); i <= j; i++)
+	{
+		if (i != INVALID_VEHICLE_ID)
+		{
+			if (GetVehicleDistanceFromPoint(i, px, py, pz) <= radius)
+			    return i;
+		}
+	}
+	return INVALID_VEHICLE_ID;
 }
