@@ -1,2 +1,2 @@
 # m1n1vv
-Pawn Skripter
+Pawn Scripter
