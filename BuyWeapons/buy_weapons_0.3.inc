@@ -26,43 +26,35 @@ static
 static const
 	mn_buystat_caliber[13][] =
     	{
-        	{".45"},
-        	{".45"},
-        	{".50"},
-        	{"12-й"},
-        	{"12-й"},
-        	{"12-й"},
-        	{"9x19 мм Парабеллум"},
-        	{"9x19 мм Парабеллум"},
-		{"7,62 мм"},
-        	{"5,56x45 мм НАТО"},
-        	{"9x19 мм Парабеллум"},
-        	{"7,62 мм"},
-        	{"7,62 мм"}
+        	{!".45"},
+        	{!".45"},
+        	{!".50"},
+        	{!"12-й"},
+        	{!"12-й"},
+        	{!"12-й"},
+        	{!"9x19 мм Парабеллум"},
+        	{!"9x19 мм Парабеллум"},
+		{!"7,62 мм"},
+        	{!"5,56x45 мм НАТО"},
+        	{!"9x19 мм Парабеллум"},
+        	{!"7,62 мм"},
+        	{!"7,62 мм"}
     	},
     	mn_buystat_shooting_range[][] =
     	{
-        	{"30-35 метров"},
-        	{"30-35 метров"},
-        	{"30-35 метров"},
-        	{"40 метров"},
-        	{"30-35 метров"},
-        	{"40 метров"},
-        	{"30-35 метров"},
-        	{"40-45 метров"},
-        	{"70 метров"},
-        	{"90 метров"},
-        	{"30-35 метров"},
-        	{"100 метров"},
-        	{"100 метров"}
-    	},
-    	mn_str_buy[] =
-    	{
-        	"Оружие: \t\t\t%s\n\n\
-        	Калибр: \t\t\t%s\n\
-        	Патронов в обойме: \t\t%i\n\
-        	Дальность стрельбы: \t\t%s\n\
-        	Цена: \t\t\t\t$%i"
+        	{!"30-35 метров"},
+        	{!"30-35 метров"},
+        	{!"30-35 метров"},
+        	{!"40 метров"},
+        	{!"30-35 метров"},
+        	{!"40 метров"},
+        	{!"30-35 метров"},
+        	{!"40-45 метров"},
+        	{!"70 метров"},
+        	{!"90 метров"},
+        	{!"30-35 метров"},
+        	{!"100 метров"},
+        	{!"100 метров"}
     	},
     	mn_weapon_slot_id[] = 
     	{ 
@@ -71,19 +63,27 @@ static const
 
 stock BuyWeapons(playerid, weaponid)
 {
+	const 
+        	BUY_INFO = 35;
     	mn_weaponid{playerid} = weaponid; 
     	weaponid -= 22;
     	GetWeaponInfo(playerid);
-    	static 
-        	string[sizeof mn_str_buy+(MAX_WEAPON_NAME+19+2+13+15)-(8+7+6+6+8)];
     	GetWeaponName(mn_weaponid{playerid}, mn_new_weapon_name, sizeof(mn_new_weapon_name));
-    	format(string, sizeof string, mn_str_buy, 
-        	mn_new_weapon_name, 
-        	mn_buystat_caliber[weaponid], 
-        	mn_ammunition{playerid}, 
-        	mn_buystat_shooting_range[weaponid], 
-        	mn_price[playerid]);
-	ShowPlayerDialog(playerid, DIALOG_WEAPONS_ID, DIALOG_STYLE_MSGBOX, !"Покупка оружия", string, !"Купить", !"Закрыть");
+	new 
+		string[6], 
+        	str[BUY_INFO] = !"Оружие:\t\t\t";
+	strcat(str, mn_new_weapon_name);
+	strcat(str, !"\n\nКалибр:\t\t\t");
+	strcat(str, mn_buystat_caliber[weaponid]);
+	strcat(str, !"\nПатронов в обойме:\t\t");
+	format(string, sizeof string, "%i", mn_ammunition{playerid});
+	strcat(str, string);
+	strcat(str, !"\nДальность стрельбы:\t\t");
+	strcat(str, mn_buystat_shooting_range[weaponid]);
+	strcat(str, !"\nЦена:\t\t\t\t$");
+	format(string, sizeof string, "%i", mn_price[playerid]);
+	strcat(str, string);
+	ShowPlayerDialog(playerid, DIALOG_WEAPONS_ID, DIALOG_STYLE_MSGBOX, "Покупка оружия", str, "Купить", "Закрыть");
 	return 1;
 }
 
@@ -104,18 +104,18 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	            	mn_player_slot[i] = mn_weapon_slot_id[mn_player_weapons[i]];
 	            	if (mn_player_weapons[i] == mn_weaponid{playerid} && mn_player_ammo[i] != 0)
 	                	return SendClientMessage(playerid, 0xAA3333AA, !"У Вас уже есть это оружие");
-	            	if (mn_player_slot[i] == mn_slot{playerid} && mn_player_weapons[i] != mn_weaponid{playerid} && mn_player_ammo[i] != 0)
+	            	if (mn_player_slot[i] == mn_slot{playerid} mn_player_ammo[i] != 0)
 			{
-				new
-					mn_str_res[47] = !"У Вас уже есть оружие в этом слоте\nПри подтверждении все патроны старого оружия удалятся\n\n";
-				new 
-					string[19+(MAX_WEAPON_NAME-2)*2];
+				const 
+					RES = 36;
 				GetWeaponName(mn_player_weapons[i], mn_old_weapon_name, sizeof mn_old_weapon_name);
-				format(string, sizeof string, "Заменить %s на %s?",
-					mn_old_weapon_name,
-					mn_new_weapon_name);
-	                	strcat(mn_str_res, string);
-	                	return ShowPlayerDialog(playerid, DIALOG_PROOF_OF_PURCHASE, DIALOG_STYLE_MSGBOX, !"Внимание!", mn_str_res, !"Да", !"Закрыть");
+				new
+					str[RES] = !"У Вас уже есть оружие в этом слоте\nПри подтверждении все патроны старого оружия удалятся\n\nЗаменить ";
+                		strcat(str, mn_old_weapon_name);
+                		strcat(str, !" на ");
+                		strcat(str, mn_new_weapon_name);
+                		strcat(str, !"?");
+                		return ShowPlayerDialog(playerid, DIALOG_PROOF_OF_PURCHASE, DIALOG_STYLE_MSGBOX, "Внимание!", str, "Да", "Закрыть");
 	            	}
 	        }
         	Buy(playerid);
