@@ -4,7 +4,9 @@ BuyWeapons 0.3.6.1
 
 > **Параметры:**
 > 
-> ```BuyWeapons(playerid, weaponid);```
+> ```pawn
+BuyWeapons(playerid, weaponid);
+```
 > 
 > * **playerid** - id игрока
 > * **weaponid** - id оружия (с 22 по 34)
