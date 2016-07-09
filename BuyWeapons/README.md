@@ -7,13 +7,13 @@
 alt="SA:MP Include BuyWeapons" width="240" height="180" border="10" /></a>
 
 Установка
----------------
+---------
 ```pawn
 #include <mn_buyweapons>
 ```
 
 Параметры
----------------
+---------
 > 
 > ```pawn
 BuyWeapons(playerid, weaponid);
@@ -22,8 +22,21 @@ BuyWeapons(playerid, weaponid);
 > * **playerid** - id игрока
 > * **weaponid** - id оружия (с 22 по 34)
 
+Применение
+----------
+```pawn
+switch(listitem)
+{
+        case 0: BuyWeapons(playerid, 23); //Silenced 9mm
+        case 1: BuyWeapons(playerid, 27); //Combat Shotgun
+        case 2: BuyWeapons(playerid, 28); //Micro SMG/Uz
+        case 3: BuyWeapons(playerid, 31); //M4
+        case 4: BuyWeapons(playerid, 34); //Sniper Rifle
+}
+```
+Полная инструкция: [https://github.com/m1n1vv/.../example.pwn](../blob/master/BuyWeapons/example.pwn])
 Этапы развития
----------------
+--------------
 
 |0.1|0.2|0.3|
 |:-:|:-:|:-:|
