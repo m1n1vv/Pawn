@@ -17,7 +17,7 @@ BuyWeapons(playerid, weaponid);
 
 ######Этапы развития######
 
->|0.1|0.2|0.3|
+|0.1|0.2|0.3|
 |:-:|:-:|:-:|
 |[**0.1.1**](https://github.com/m1n1vv/Pawn/blob/master/BuyWeapons/outdated_scripts/buy_weapons_0.1.inc)|0.2 test|0.3.1|
 ||0.2.1|0.3.2|
