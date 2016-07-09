@@ -34,7 +34,7 @@ switch(listitem)
         case 4: BuyWeapons(playerid, 34); //Sniper Rifle
 }
 ```
-Полная инструкция: [https://github.com/m1n1vv/.../example.pwn](../blob/master/BuyWeapons/example.pwn])
+Полная инструкция: [https://github.com/m1n1vv/.../example.pwn](https://github.com/m1n1vv/Pawn/blob/master/BuyWeapons/example.pwn)
 Этапы развития
 --------------
 
