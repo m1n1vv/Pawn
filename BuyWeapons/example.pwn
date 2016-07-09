@@ -1,3 +1,6 @@
+#include <a_samp>
+#include <mn_buyweapons>
+
 new pickup;
 
 public OnGameModeInit()
