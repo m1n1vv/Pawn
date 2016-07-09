@@ -6,7 +6,14 @@
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=f72H9AEBAKUE" target="_blank"><img src="http://img.youtube.com/vi/f72H9AEBAKU/0.jpg" 
 alt="SA:MP Include BuyWeapons" width="240" height="180" border="10" /></a>
 
-> **Параметры:**
+Установка
+---------------
+```pawn
+#include <buy_weapons_0.3>
+```
+
+Параметры
+---------------
 > 
 > ```pawn
 BuyWeapons(playerid, weaponid);
