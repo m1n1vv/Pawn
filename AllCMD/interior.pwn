@@ -175,7 +175,7 @@ CMD:inter(playerid,params[])
                         {-1473.0231, 755.9099, 40.8029, 0}
                 };
                 
-        if (interior < sizeof(all_pos) || interior > sizeof(all_pos))
+        if (interior < 1 || interior > sizeof(all_pos))
                 return SendClientMessage(playerid, -1, !"Неверный id интерьера. (От 1 до 150)");
                 
         SetPlayerPos(playerid, all_pos[interior-1][p_x], all_pos[interior-1][p_y], all_pos[interior-1][p_z]);
