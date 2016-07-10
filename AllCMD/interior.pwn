@@ -8,9 +8,6 @@ CMD:inter(playerid,params[])
         extract params -> new interior; else
                 return SendClientMessage(playerid, -1, !"Используйте: /inter [id интерьера]");
                 
-        if (interior < 1 || interior > 150)
-                return SendClientMessage(playerid, -1, !"Неверный id интерьера. (От 1 до 150)");
-                
         const
                 POS = 150;
 
@@ -23,7 +20,7 @@ CMD:inter(playerid,params[])
                         p_int
                 };
 
-        new
+        static
                 all_pos[POS][cmd_pos_int] =
                 {
                         {-25.884498, -185.868988, 1003.546875, 17}, 
@@ -177,6 +174,9 @@ CMD:inter(playerid,params[])
                         {612.9734, -75.8104, 997.9922, 2}, 
                         {-1473.0231, 755.9099, 40.8029, 0}
                 };
+                
+        if (interior < sizeof(all_pos) || interior > sizeof(all_pos))
+                return SendClientMessage(playerid, -1, !"Неверный id интерьера. (От 1 до 150)");
                 
         SetPlayerPos(playerid, all_pos[interior-1][p_x], all_pos[interior-1][p_y], all_pos[interior-1][p_z]);
         SetPlayerInterior(playerid, all_pos[interior-1][p_int]);
