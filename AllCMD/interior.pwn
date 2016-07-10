@@ -20,7 +20,7 @@ CMD:inter(playerid,params[])
                         p_int
                 };
 
-        static
+        static const
                 all_pos[POS][cmd_pos_int] =
                 {
                         {-25.884498, -185.868988, 1003.546875, 17}, 
