@@ -39,7 +39,6 @@ CMD:getveh(playerid, params[])
                                 format(string, sizeof(string), str_y, params[0], numberofauto);
                                 SendClientMessage(playerid, 0x99dd32AA, string);
                         }
-                        
                         else 
                         {
                                 format(string, sizeof(string), str_n, params[0]);
