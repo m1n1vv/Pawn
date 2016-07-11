@@ -7,9 +7,6 @@ CMD:inter(playerid,params[])
         
         extract params -> new interior; else
                 return SendClientMessage(playerid, -1, !"Используйте: /inter [id интерьера]");
-                
-        const
-                POS = 150;
 
         enum
                 cmd_pos_int
@@ -21,7 +18,7 @@ CMD:inter(playerid,params[])
                 };
 
         static const
-                all_pos[POS][cmd_pos_int] =
+                all_pos[][cmd_pos_int] =
                 {
                         {-25.884498, -185.868988, 1003.546875, 17}, 
                         {6.091179, -29.271898, 1003.549438, 10}, 
