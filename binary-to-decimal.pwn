@@ -10,14 +10,20 @@ main()
 		error;
 	for (new i = 0; i < strlen(sub); i++)
 	{
-		if (sub[i] != '0' && sub[i] != '1')
-		{
-			error++;
-			break;
-		}
-		n--;
-		tern = (sub[i] == '1') ? (1 << n) : (0);
-		result += tern;
+		switch (sub[i])
+        	{
+            		case '0'..'1':
+            		{
+                		n--;
+                		tern = (sub[i] == '1') ? (1 << n) : (0);
+                		result += tern;
+            		}
+            		default:
+            		{
+                		error++;
+                		break;
+            		}
+        	}
 	}
 	if (!error)
 		printf("\tResult: %i\n", result);
