@@ -2,7 +2,7 @@
 main()
 {
         static
-                sub[] = "1200101";
+                sub[] = "100101";
         new
                 n = sizeof(sub)-1,
                 tern,
