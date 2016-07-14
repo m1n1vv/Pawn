@@ -12,7 +12,7 @@ main()
 	{
 		switch (sub[i])
         	{
-            		case '0'..'1':
+            		case '0', '1':
             		{
                 		n--;
                 		tern = (sub[i] == '1') ? (1 << n) : (0);
