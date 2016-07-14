@@ -1,3 +1,31 @@
+//V2
+main()
+{
+        static
+                sub[] = "1200101";
+        new
+                n = sizeof(sub)-1,
+                tern,
+                result,
+                error;
+        for (new i = 0; i < sizeof(sub)-1; i++)
+        {
+                if (sub[i] != '0' && sub[i] != '1')
+                {
+                        error++;
+                        break;
+                }
+                n--;
+                tern = (sub[i] == '1') ? (1 << n) : (0);
+                result += tern;
+        }
+        if (!error)
+                printf("\tResult: %i\n", result);
+        else
+                printf("\tError\n");
+}
+
+//V1
 main()
 {
 	new 
