@@ -21,6 +21,7 @@ stock Notation(playerid, sub[])
                 {
                         case '0', '1':
                                 result += (sub[i] == '1') ? (1 << strlen(sub)-1-i) : (0);
+                                
                         default:
                         {
                                 error++;
