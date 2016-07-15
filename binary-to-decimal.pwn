@@ -6,12 +6,12 @@ main()
 	new
 		result,
 		error;
-	for (new i = 0; i < strlen(sub); i++)
+	for (new i = 0, n = strlen(sub) - 1; i <= n; i++)
 	{
 		switch (sub[i])
         	{
             		case '0', '1':
-				result += (sub[i] == '1') ? (1 << strlen(sub)-1-i) : (0);
+				result += (sub[i] == '1') ? (1 << n - i) : (0);
             		default:
             		{
                 		error++;
