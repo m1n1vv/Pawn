@@ -20,10 +20,7 @@ stock Notation(playerid, sub[])
                 switch (sub[i])
                 {
                         case '0', '1':
-                        {
-                                n--;
-                                result += (sub[i] == '1') ? (1 << n) : (0);
-                        }
+                                result += (sub[i] == '1') ? (1 << strlen(sub)-1-i) : (0);
                         default:
                         {
                                 error++;
