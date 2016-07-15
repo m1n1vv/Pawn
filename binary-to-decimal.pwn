@@ -4,7 +4,6 @@ main()
 	static
 		sub[] = "1000101";
 	new
-		n = strlen(sub),
 		result,
 		error;
 	for (new i = 0; i < strlen(sub); i++)
@@ -12,10 +11,7 @@ main()
 		switch (sub[i])
         	{
             		case '0', '1':
-            		{
-                		n--;
-                		result += (sub[i] == '1') ? (1 << n) : (0);
-            		}
+				result += (sub[i] == '1') ? (1 << strlen(sub)-1-i) : (0);
             		default:
             		{
                 		error++;
