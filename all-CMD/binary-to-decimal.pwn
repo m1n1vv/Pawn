@@ -33,7 +33,7 @@ stock Notation(playerid, sub[])
         if (!error)
         {
                 static const
-                        str[] = "\t\t\tResult: %i\n";
+                        str[] = "\t\t\tResult: %i";
                         
                 new
                         string[sizeof str+20-5];
