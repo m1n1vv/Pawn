@@ -13,7 +13,7 @@ stock Notation(playerid, sub[])
         new
                 result;
                 
-        for (new i = 0, n = strlen(sub) - 1; i < n; i++)
+        for (new i = 0, n = strlen(sub) - 1; i <= n; i++)
         {
                 switch (sub[i])
                 {
