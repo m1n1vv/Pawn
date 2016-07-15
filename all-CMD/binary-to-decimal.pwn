@@ -11,37 +11,32 @@ CMD:b(playerid, params[])
 stock Notation(playerid, sub[])
 {
         new
-                n = strlen(sub),
-                result,
-                error;
+                result;
                 
         for (new i = 0, n = strlen(sub) - 1; i < n; i++)
         {
                 switch (sub[i])
                 {
                         case '0', '1':
+                        {
                                 result += (sub[i] == '1') ? (1 << n - i) : (0);
+                        }
                                 
                         default:
                         {
-                                error++;
-                                SendClientMessage(playerid, 0xAA3333AA, !"\t\t\tError");
-                                break;
+                                return SendClientMessage(playerid, 0xAA3333AA, !"\t\t\tError");
                         }
                 }
         }
         
-        if (!error)
-        {
-                static const
-                        str[] = "\t\t\tResult: %i";
+        static const
+                str[] = "\t\t\tResult: %i";
                         
-                new
-                        string[sizeof str+20-5];
+        new
+                string[sizeof str+20-5];
                         
-                format(string, sizeof string, str, result);
-                return SendClientMessage(playerid, 0x33AA33AA, string);
-        }
+        format(string, sizeof string, str, result);
+        SendClientMessage(playerid, 0x33AA33AA, string);
         
         return 1;
 }
