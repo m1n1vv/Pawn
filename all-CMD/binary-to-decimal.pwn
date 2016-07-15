@@ -12,7 +12,6 @@ stock Notation(playerid, sub[])
 {
         new
                 n = strlen(sub),
-                tern,
                 result,
                 error;
                 
@@ -23,8 +22,7 @@ stock Notation(playerid, sub[])
                         case '0', '1':
                         {
                                 n--;
-                                tern = (sub[i] == '1') ? (1 << n) : (0);
-                                result += tern;
+                                result += (sub[i] == '1') ? (1 << n) : (0);
                         }
                         default:
                         {
