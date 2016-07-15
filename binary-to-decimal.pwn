@@ -5,7 +5,6 @@ main()
 		sub[] = "1000101";
 	new
 		n = strlen(sub),
-		tern,
 		result,
 		error;
 	for (new i = 0; i < strlen(sub); i++)
@@ -15,8 +14,7 @@ main()
             		case '0', '1':
             		{
                 		n--;
-                		tern = (sub[i] == '1') ? (1 << n) : (0);
-                		result += tern;
+                		result += (sub[i] == '1') ? (1 << n) : (0);
             		}
             		default:
             		{
