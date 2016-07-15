@@ -15,7 +15,7 @@ stock Notation(playerid, sub[])
                 result,
                 error;
                 
-        for (new i = 0, n = strlen(sub) - 1; i <= n; i++)
+        for (new i = 0, n = strlen(sub) - 1; i < n; i++)
         {
                 switch (sub[i])
                 {
