@@ -11,7 +11,9 @@ main()
 		switch (sub[i])
         	{
             		case '0', '1':
+            		{
 				result += (sub[i] == '1') ? (1 << n - i) : (0);
+			}
             		default:
             		{
                 		error++;
