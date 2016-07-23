@@ -22,9 +22,13 @@ main()
         	}
 	}
 	if (!error)
+	{
 		printf("\tResult: %i\n", result);
+	}
 	else
+	{
 		printf("\tError\n");
+	}
 }
 
 //V1
