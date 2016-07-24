@@ -1,7 +1,7 @@
 //V2
 main()
 {
-	static
+	static const
 		sub[] = "1000101";
 	new
 		result,
