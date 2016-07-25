@@ -8,8 +8,6 @@ stock strnum(n)
 		n = n/10;
 		res++;
 	}
-
-	printf("%i", res);
 	
 	return n;
 }
