@@ -1,7 +1,7 @@
 CMD:b(playerid, params[])
 {
         if (isnull(params))
-                return SendClientMessage(playerid, 0xAA3333AA, !"[Ïîäñêàçêà]: /b [äâîè÷íûé êîä]");
+                return SendClientMessage(playerid, 0xAA3333AA, !"[Подсказка]: /b [двоичный код]");
         
         new
 		result = Binary(params);
@@ -10,6 +10,7 @@ CMD:b(playerid, params[])
         {
                 new
                         string[19];
+                        
                 format(string, sizeof string, "Result: %d", result);
                 SendClientMessage(playerid, -1, string);
         }
