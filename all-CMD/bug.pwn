@@ -15,6 +15,9 @@ CMD:bug(playerid, params[])
         new 
                 query[sizeof str_q + MAX_PLAYER_NAME + sizeof(dis)*2 - 2*3], 
                 str_m[16] = !"Спасибо, ";
+                
+        strcat(str_m, PlayerInfo[playerid][pName]);
+        strcat(str_m, !", за оказанную помощь серверу");
 
         format(query, sizeof query, str_q, 
                 PlayerInfo[playerid][pName], 
@@ -23,8 +26,6 @@ CMD:bug(playerid, params[])
         );
         mysql_function_query(mysql_connect_ID, query, false, "", "");
 
-        strcat(str_m, PlayerInfo[playerid][pName]);
-        strcat(str_m, !", за оказанную помощь серверу");
         SendClientMessage(playerid, -1, str_m);
 
         SendClientMessage(playerid, -1, !"Администратор обязательно рассмотрит Вашу запись в багрепорте и свяжется с вами указанным Вами способом");
