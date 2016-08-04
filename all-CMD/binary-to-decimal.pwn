@@ -11,7 +11,7 @@ CMD:b(playerid, params[])
                 new
                         string[19];
                         
-                format(string, sizeof string, "Result: %d", result);
+                format(string, sizeof(string), "Result: %d", result);
                 SendClientMessage(playerid, -1, string);
         }
         else 
