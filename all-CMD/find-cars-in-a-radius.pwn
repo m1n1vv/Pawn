@@ -13,7 +13,7 @@ CMD:getveh(playerid, params[])
                 Float:x, 
                 Float:y, 
                 Float:z,
-                string[sizeof str_y+10];
+                string[sizeof(str_y)+10];
                 
         switch(random(6))
         {
