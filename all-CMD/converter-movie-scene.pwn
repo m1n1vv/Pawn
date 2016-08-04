@@ -10,7 +10,7 @@ CMD:pawn(playerid, params[])
         new
                 File:file = fopen(!"cms_pawn.txt", io_append),
                 string[93],
-                info[sizeof str_res+5+4-2*2],
+                info[sizeof(str_res)+5+4-2*2],
                 vehicles;
 
         for (new i = 1; i <= MAX_VEHICLES; i++)
@@ -29,13 +29,13 @@ CMD:pawn(playerid, params[])
                         if (IsPlayerInRangeOfPoint(playerid, radius, x, y, z))
                         {
                                 vehicles++;
-                                format(string, sizeof string, str, GetVehicleModel(i), x, y, z, a, vehicles);
+                                format(string, sizeof(string), str, GetVehicleModel(i), x, y, z, a, vehicles);
                                 fwrite(file, string);
                         }
                 }
         }
 
-        format(info, sizeof info, str_res, radius, vehicles);
+        format(info, sizeof(info), str_res, radius, vehicles);
         SendClientMessage(playerid, 0x99FF00AA, info);
         
         fclose(file);
