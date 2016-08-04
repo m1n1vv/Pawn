@@ -16,7 +16,7 @@ CMD:weaponslot(playerid)
         {
                 GetPlayerWeaponData(playerid, i, Player_Weapons[i], Player_Ammo[i]);
                 Player_Slots[i] = Slot_ID[Player_Weapons[i]];
-                format(string, sizeof string, "%d", Player_Slots[i]);
+                format(string, sizeof(string), "%d", Player_Slots[i]);
                 printf(string);
                 
                 if (Player_Slots[i] == 6)
