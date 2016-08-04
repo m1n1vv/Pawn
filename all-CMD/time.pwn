@@ -29,7 +29,7 @@ CMD:time(playerid)
         gettime(Hours, Minutes, Seconds);
         getdate(Year, Month, Day);
 
-        format(string, sizeof string, "%d:%d:%d, %d %s %d года",
+        format(string, sizeof(string), "%d:%d:%d, %d %s %d года",
                 Hours,
                 Minutes,
                 Seconds,
