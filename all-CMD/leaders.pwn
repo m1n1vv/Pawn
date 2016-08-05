@@ -36,7 +36,7 @@ CMD:leaders(playerid)
                 string[sizeof str + 24 + MAX_PLAYER_NAME + 4 - 2*3],
                 b;
 
-        foreach(Player,i)
+        for(new i = 0, j = GetPlayerPoolSize()+1; i <= j; i++)
         {
                 if (Player[i][pAdmin] > 0) 
                         continue;
