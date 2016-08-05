@@ -30,7 +30,7 @@ CMD:leaders(playerid)
                         "{708090}Правительство",
                         "{B313E7}Casino Rich",
                         "{FF0000}Неизвестно"
-        };
+                };
 
         new 
                 string[sizeof str + 24 + MAX_PLAYER_NAME + 4 - 2*3],
