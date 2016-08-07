@@ -1,6 +1,6 @@
 CMD:money(playerid,params[])
 {
-        if(Player[playerid][pAdmin] < 10)
+        if (Player[playerid][pAdmin] < 10)
                 return SendClientMessage(playerid, -1, !"ВЫ не уполномочены использовать эту команду")
 
         extract params -> new id, sum; else 
