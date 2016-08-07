@@ -17,7 +17,7 @@ CMD:money(playerid,params[])
 
         GetPlayerName(id, playername, sizeof(playername));
 
-        format(string,sizeof(string), str, playername, sum);
+        format(string, sizeof(string), str, playername, sum);
         SendClientMessageToAll(COLOR_RED, string);
 
         return 1;
