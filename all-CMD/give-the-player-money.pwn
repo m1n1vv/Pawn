@@ -11,13 +11,13 @@ CMD:money(playerid,params[])
 
         new 
                 playername[MAX_PLAYER_NAME],
-                string[sizeof str + MAX_PLAYER_NAME + 11 - 2*2];
+                string[sizeof(str)+MAX_PLAYER_NAME+11-2*2];
 
         GivePlayerMoney(id, sum);
 
         GetPlayerName(id, playername, sizeof(playername));
 
-        format(string,sizeof string, str, playername, sum);
+        format(string,sizeof(string), str, playername, sum);
         SendClientMessageToAll(COLOR_RED, string);
 
         return 1;
