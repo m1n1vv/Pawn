@@ -1,4 +1,4 @@
-CMD:weaponslot(playerid)
+CMD:weaponslot(playerid) 
 {
         static const
                 Slot_ID[] =
