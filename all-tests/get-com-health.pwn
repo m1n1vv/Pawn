@@ -1,5 +1,8 @@
-stock GetComHealth(playerid, &Float:health, &Float:m)
+stock GetComHealth(playerid, &Float:m)
 {
+        static 
+                Float:health;
+                
         GetPlayerHealth(playerid, health);
         
         if (health == 100) 
