@@ -1,6 +1,7 @@
-stock GetComHealth(playerid, &Float:m)
+stock GetComHealth(playerid)
 {
         static 
+                m,
                 Float:health;
                 
         GetPlayerHealth(playerid, health);
