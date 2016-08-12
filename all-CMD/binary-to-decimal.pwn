@@ -25,7 +25,7 @@ CMD:b(playerid, params[])
 stock Binary(const sub[])
 {
 	new
-	    result;
+		result;
 	    
         for (new i = 0, n = strlen(sub) - 1; i <= n; i++)
         {
