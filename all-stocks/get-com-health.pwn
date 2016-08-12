@@ -3,7 +3,7 @@ stock GetComHealth(playerid)
 	static
  		Float:m,
 		Float:health,
-		str[] = "Здоровье ополнилось на %.1f хп";
+		str[] = "Здоровье пополнилось на %.1f хп";
             
 	new
 		string[sizeof str + 10];
