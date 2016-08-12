@@ -7,6 +7,7 @@ stock GetComHealth(playerid)
             
 	new
 		string[sizeof str + 10];
+		
 	GetPlayerHealth(playerid, health);
 
 	if (health == 100)
@@ -15,7 +16,6 @@ stock GetComHealth(playerid)
 	SetPlayerHealth(playerid, 100);
 
 	m = 100 - health;
-
 
 	format(string, sizeof string, str, m);
 	SendClientMessage(playerid, -1, string);
