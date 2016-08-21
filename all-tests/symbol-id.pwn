@@ -8,10 +8,10 @@ main()
 		printf("%c: %i", i, i); //lowercase
 	
 	//Russian
-	for (new i = 704; i < 704 + 32; i++)
+	for (new i = 192; i < 192 + 32; i++)
 		printf("%c: %i", i, i); //uppercase
 
-	for (new i = 736; i < 736 + 32; i++)
+	for (new i = 224; i < 224 + 32; i++)
 		printf("%c: %i", i, i); //lowercase
 }
 
