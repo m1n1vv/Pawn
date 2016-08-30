@@ -3,7 +3,7 @@ new
         Float:health1[MAX_PLAYERS],
         Float:health2[MAX_PLAYERS];
 
-public OnPlayerGiveDamage(playerid, damagedid, Float: amount, weaponid, bodypart)
+public OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart)
 {
         if(damagedid != INVALID_PLAYER_ID)
         {
