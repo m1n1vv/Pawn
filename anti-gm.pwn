@@ -5,7 +5,7 @@ new
 
 public OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart)
 {
-        if(damagedid != INVALID_PLAYER_ID)
+        if (damagedid != INVALID_PLAYER_ID)
         {
                 if (hack{playerid} == 0)
                 {
