@@ -23,4 +23,5 @@ public OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart)
                                 SendClientMessageToAll(-1, !"GM OFF");
                 }
         }
-        r
+        return 1;
+}
