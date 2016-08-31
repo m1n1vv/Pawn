@@ -42,11 +42,13 @@ public OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart)
                 if (hack{damagedid} == 0)
                 {
                         hack{damagedid} = 1;
+                        
                         GetPlayerHealth(damagedid, health1[damagedid]);
                 }
                 else if (hack{damagedid} == 1)
                 {
                         hack{damagedid} = 0;
+                        
                         GetPlayerHealth(damagedid, health2[damagedid]);
 
                         if (health1[damagedid] == health2[damagedid])
