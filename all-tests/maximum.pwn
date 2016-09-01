@@ -14,5 +14,5 @@ main()
 			m = a[i];
 	}
 	
-	printf ("Maximum: %i ", m);
+	printf ("Maximum: %i", m);
 }
