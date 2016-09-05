@@ -12,7 +12,7 @@ main()
 		},
 		m = a[0];
 
-        for (new i = 0; i < sizeof a; i++)
+        for (new i = 0, n = sizeof a; i < n; i++)
         {
                 printf("%i", a[i]);
 	    
