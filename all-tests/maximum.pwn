@@ -17,7 +17,7 @@ main()
 	printf ("Maximum: %i", m);
 }
 
-main()
+main() 
 {
 	new
 		m,
