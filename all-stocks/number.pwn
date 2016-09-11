@@ -1,7 +1,7 @@
 
 // Найти 25% от 120 и прибавить к 1100
-stock strperc(percentage, figure)
-	return figure * percentage / 100;
+stock strperc(percentage, number)
+	return number * percentage / 100;
 /*
 * new
 * 	num = 1100;
@@ -10,8 +10,8 @@ stock strperc(percentage, figure)
 */
 
 // Возведение в степень
-stock strdeg(figure, degree)
-	return degree -1 << figure;
+stock strdeg(number, degree)
+	return degree -1 << number;
 /*
 * printf("%i", strdeg(2, 2)); // Результат: 4
 */
