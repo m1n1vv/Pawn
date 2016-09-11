@@ -5,6 +5,7 @@ stock strperc(p, a)
 
 new
 	num = 1100;
-num = sum + strperc(120, 25);
+	
+num = num + strperc(120, 25);
 printf("%i", sum);
 */
