@@ -7,6 +7,7 @@ stock strperc(percentage, figure)
 * 	num = 1100;
 * num = num + strperc(25, 120);
 * printf("%i", num);
+* - Результат: 1130
 */
 
 // Возведение в степень
@@ -14,6 +15,6 @@ stock strdeg(figure, degree)
 	return degree -1 << figure;
 /*
 * printf("%i", strdeg(2, 2));
-* -Result: 4
+* - Результат: 4
 */
 
