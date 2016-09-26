@@ -15,8 +15,8 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 		if (ammo == ac_ia__ammo[playerid])
 			return Kick(playerid);
 	}
-#if	defined	ac_ia__ia__OnPlayerWeaponShot
-	ac_ia__ia__OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
+#if	defined	ac_ia__OnPlayerWeaponShot
+	ac_ia__OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
 #endif
 	return 1;
 }
@@ -25,7 +25,7 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 #else
 	#define	_ALS_OnPlayerWeaponShot
 #endif
-#define	OnPlayerWeaponShot	ac_ia__ia__OnPlayerWeaponShot
-#if defined ac_ia__ia__OnPlayerWeaponShot
-forward ac_ia__ia__OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
+#define	OnPlayerWeaponShot	ac_ia__OnPlayerWeaponShot
+#if defined ac_ia__OnPlayerWeaponShot
+forward ac_ia__OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
 #endif
