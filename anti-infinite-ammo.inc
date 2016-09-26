@@ -7,7 +7,7 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 	if(GetTickCount() > ac_time[playerid])
 	{
 		new
-		ammo = ac_ammo[playerid];
+			ammo = ac_ammo[playerid];
 
 		ac_ammo[playerid] = GetPlayerAmmo(playerid);
 		ac_time[playerid] = GetTickCount() + 1000;
