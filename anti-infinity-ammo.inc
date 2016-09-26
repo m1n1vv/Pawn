@@ -1,22 +1,22 @@
 static
-	ac_time[MAX_PLAYERS],
-	ac_ammo[MAX_PLAYERS];
+	ac_ia__time[MAX_PLAYERS],
+	ac_ia__ammo[MAX_PLAYERS];
   
 public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ)
 {
-	if(GetTickCount() > ac_time[playerid])
+	if(GetTickCount() > ac_ia__time[playerid])
 	{
 		new
-			ammo = ac_ammo[playerid];
+			ammo = ac_ia__ammo[playerid];
 
-		ac_ammo[playerid] = GetPlayerAmmo(playerid);
-		ac_time[playerid] = GetTickCount() + 1000;
+		ac_ia__ammo[playerid] = GetPlayerAmmo(playerid);
+		ac_ia__time[playerid] = GetTickCount() + 1000;
 
-		if (ammo == ac_ammo[playerid])
+		if (ammo == ac_ia__ammo[playerid])
 			return Kick(playerid);
 	}
-#if	defined	ac_ia__OnPlayerWeaponShot
-	ac_ia__OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
+#if	defined	ac_ia__ia__OnPlayerWeaponShot
+	ac_ia__ia__OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
 #endif
 	return 1;
 }
@@ -25,7 +25,7 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 #else
 	#define	_ALS_OnPlayerWeaponShot
 #endif
-#define	OnPlayerWeaponShot	ac_ia__OnPlayerWeaponShot
-#if defined ac_ia__OnPlayerWeaponShot
-forward ac_ia__OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
+#define	OnPlayerWeaponShot	ac_ia__ia__OnPlayerWeaponShot
+#if defined ac_ia__ia__OnPlayerWeaponShot
+forward ac_ia__ia__OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
 #endif
