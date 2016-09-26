@@ -1,9 +1,9 @@
 main()
 {
 	new
-		LS = 500,
-		LV = 70,
-		SF = 3000;
+		LS = 654,
+		LV = 7653,
+		SF = 27;
 
 	if (LS < LV)
 	{
