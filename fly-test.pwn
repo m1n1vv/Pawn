@@ -25,7 +25,9 @@ stock AntiFLY(playerid)
 		for(new i = 0; i < E_FLY__ANIMS; i++)
 		{
 			if (strcmp(animlib, e_fly__animlib[i][e_fly__animname], true))
-				return SendClientMessage(playerid, -1, !"FLY ON")
+				SendClientMessage(playerid, -1, !"FLY OFF");
+			else
+				SendClientMessage(playerid, -1, !"FLY ON");
 		}
 	}
         
