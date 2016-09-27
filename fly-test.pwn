@@ -17,11 +17,11 @@ stock AntiFLY(playerid)
 		animlib[32], 
 		animname[32];
 
-	if(GetPlayerAnimationIndex(playerid))
+	if (GetPlayerAnimationIndex(playerid))
 	{
 		GetAnimationName(GetPlayerAnimationIndex(playerid),animlib,32,animname,32);
 
-		for(new i = 0; i < E_FLY__ANIMS; i++)
+		for (new i = 0; i < E_FLY__ANIMS; i++)
 		{
 			if (strcmp(animlib, e_fly__animlib[i][e_fly__animname], true))
 				SendClientMessage(playerid, -1, !"FLY OFF");
