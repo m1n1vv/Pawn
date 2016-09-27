@@ -1,17 +1,25 @@
 stock GivePlayerMoneyPlus(playerid, amount)
 {
-        #define MoneyPlus   pInfo[playerid][pMoney]
+	#define MoneyPlus   pInfo[playerid][pMoney]
+
+	static
+		AmountPlus[MAX_PLAYERS char];
+
+	if (!AmountPlus{playerid})
+	{
+		AmountPlus++;
+		return GivePlayerMoney(playerid, amount);
+	}
     
-        if (GetPlayerMoney(playerid) != MoneyPlus)
-        {
-                ResetPlayerMoney(playerid);
-                GivePlayerMoney(playerid, MoneyPlus);
-        }
-        
+	if (GetPlayerMoney(playerid) != MoneyPlus)
+	{
+		ResetPlayerMoney(playerid);
+		GivePlayerMoney(playerid, MoneyPlus);
+	}
         MoneyPlus += amount;
         GivePlayerMoney(playerid, amount);
 
-        #undef MoneyPlus
+	#undef admin_lvl
 
         return 1;
 }
