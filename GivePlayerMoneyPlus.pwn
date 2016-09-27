@@ -16,6 +16,7 @@ stock GivePlayerMoneyPlus(playerid, amount)
 		ResetPlayerMoney(playerid);
 		GivePlayerMoney(playerid, MoneyPlus);
 	}
+	
         MoneyPlus += amount;
         GivePlayerMoney(playerid, amount);
 
