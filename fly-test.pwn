@@ -8,7 +8,7 @@ stock AntiFLY(playerid)
 	};
 
 	static const
-		e_fly__animlib[][e_fly__anim] =
+		e_fly__animlib[E_FLY__ANIMS][e_fly__anim] =
 		{
 			{"JUMP_LAND"}
 		};
