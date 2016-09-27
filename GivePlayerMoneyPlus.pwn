@@ -1,26 +1,22 @@
 stock GivePlayerMoneyPlus(playerid, amount)
 {
-	#define MoneyPlus   pInfo[playerid][pMoney]
-
 	static
 		AmountPlus[MAX_PLAYERS char];
 
 	if (!AmountPlus{playerid})
 	{
-		AmountPlus++;
+		AmountPlus{playerid}++;
 		return GivePlayerMoney(playerid, amount);
 	}
     
-	if (GetPlayerMoney(playerid) != MoneyPlus)
+	if (GetPlayerMoney(playerid) != pInfo[playerid][pMoney])
 	{
 		ResetPlayerMoney(playerid);
-		GivePlayerMoney(playerid, MoneyPlus);
+		GivePlayerMoney(playerid, pInfo[playerid][pMoney]);
 	}
 	
-        MoneyPlus += amount;
+        pInfo[playerid][pMoney] += amount;
         GivePlayerMoney(playerid, amount);
-
-	#undef MoneyPlus
 
         return 1;
 }
