@@ -15,7 +15,10 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 		ac_ia__time[playerid] = GetTickCount() + 1000;
 
 		if (ammo == ac_ia__ammo[playerid])
+		{
+			ac_ia__ammo[playerid] = 0;
 			return Kick(playerid);
+		}
 	}
 #if	defined	ac_ia__OnPlayerWeaponShot
 	ac_ia__OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
