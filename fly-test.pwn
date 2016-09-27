@@ -4,14 +4,13 @@ stock AntiFLY(playerid)
 	
 	enum e_fly__anim
 	{
-		e_fly__animlib[32],
 		e_fly__animname[32]
 	};
 
 	static const
 		e_fly__animlib[][e_fly__anim] =
 		{
-			{"PED", "JUMP_LAND"}
+			{"JUMP_LAND"}
 		};
 
 	new
