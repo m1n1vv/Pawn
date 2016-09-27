@@ -4,7 +4,7 @@ static
   
 public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ)
 {
-	if(GetTickCount() > ac_ia__time[playerid])
+	if (GetTickCount() > ac_ia__time[playerid])
 	{
 		new
 			ammo = ac_ia__ammo[playerid];
