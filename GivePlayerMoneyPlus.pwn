@@ -19,7 +19,7 @@ stock GivePlayerMoneyPlus(playerid, amount)
         MoneyPlus += amount;
         GivePlayerMoney(playerid, amount);
 
-	#undef admin_lvl
+	#undef MoneyPlus
 
         return 1;
 }
