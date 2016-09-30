@@ -5,5 +5,6 @@ GivePlayerMoneyPlus получает указанную сумму, присва
 
 В паблик завершения регистрации/авторизации добавляем:
 ```pawn
-GivePlayerMoney(playerid, 0); //оставляем 0. Можно использовать для бонуса при регистрации: GivePlayerMoney(playerid, 25000);
+GivePlayerMoney(playerid, 0); //оставляем 0 
+Можно использовать для бонуса при регистрации: GivePlayerMoney(playerid, 25000);
 ```
