@@ -1,13 +1,13 @@
 stock GivePlayerMoneyPlus(playerid, amount)
 {   
-        pInfo[playerid][pMoney] += amount;
-        GivePlayerMoney(playerid, amount);
-	
 	if (GetPlayerMoney(playerid) != pInfo[playerid][pMoney])
 	{
 		ResetPlayerMoney(playerid);
 		GivePlayerMoney(playerid, pInfo[playerid][pMoney]);
 	}
+	
+        pInfo[playerid][pMoney] += amount;
+        GivePlayerMoney(playerid, amount);
 	
         return 1;
 }
