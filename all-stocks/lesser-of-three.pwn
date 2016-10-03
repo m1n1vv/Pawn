@@ -1,4 +1,3 @@
-//for include
 stock lesInt(a, b, c)
 {
         static
@@ -20,6 +19,7 @@ stock lesInt(a, b, c)
         return minimum;
 }
 
+//for include
 stock Float:lesFloat(Float:a, Float:b, Float:c)
 {
         static
@@ -42,7 +42,6 @@ stock Float:lesFloat(Float:a, Float:b, Float:c)
 }
 
 //for mod
-
 forward Float:lesFloat(Float:a, Float:b, Float:c);
 public Float:lesFloat(Float:a, Float:b, Float:c)
 {
