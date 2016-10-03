@@ -17,5 +17,6 @@ stock Binary(const sub[])
                         }
                 }
         }
+	
         return result;
 }
