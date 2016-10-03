@@ -15,6 +15,7 @@ stock lesInt(a, b, c)
         {
                 minimum = c;
         }
+        
         return minimum;
 }
 
@@ -35,5 +36,6 @@ stock lesFloat(Float:a, Float:b, Float:c)
         {
                 minimum = c;
         }
+        
         return minimum;
 }
