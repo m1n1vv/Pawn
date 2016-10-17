@@ -20,8 +20,8 @@ CMD:todo(playerid, params[])
 
         mode -= 1;
 
-        format(str, sizeof str, "%s - %s %s, *%s", res1, (!mode) ? ("сказал") : ("крикнул"), Player[playerid][pName], res2);
-        SendClientMessage(playerid, 0xc8d8e3AA, str);
+        format(str, sizeof str, "%s - %s %s, *%s", res1, (!mode) ? ("сказал") : ("крикнул"), pInfo[playerid][pName], res2);
+        SendClientMessageToAll(-1, str);
 
         return 1;
 }
