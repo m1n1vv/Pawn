@@ -48,7 +48,6 @@ CMD:getveh(playerid, params[])
                 format(string, sizeof(string), str_n, radius);
                 SendClientMessage(playerid, 0xc8d8e3AA, string);
         }
-
-
+        
         return 1;
 }
