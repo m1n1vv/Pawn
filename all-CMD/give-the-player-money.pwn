@@ -1,7 +1,7 @@
 CMD:money(playerid,params[])
 {
-        if (Player[playerid][pAdmin] < 10)
-                return SendClientMessage(playerid, -1, !"ВЫ не уполномочены использовать эту команду")
+        if (pInfo[playerid][pAdmin] < 10)
+                return SendClientMessage(playerid, -1, !"Вы не уполномочены использовать эту команду")
 
         extract params -> new id, sum; else 
                 return SendClientMessage(playerid, -1, !"Подсказка /money [ID игрока] [сумма]");
@@ -18,7 +18,7 @@ CMD:money(playerid,params[])
         GetPlayerName(id, playername, sizeof(playername));
 
         format(string, sizeof(string), str, playername, sum);
-        SendClientMessageToAll(COLOR_RED, string);
+        SendClientMessageToAll(-1, string);
 
         return 1;
 }
