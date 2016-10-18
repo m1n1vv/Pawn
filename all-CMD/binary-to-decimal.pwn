@@ -4,7 +4,7 @@ CMD:b(playerid, params[])
 		return SendClientMessage(playerid, 0xAA3333AA, !"[Подсказка]: /b [двоичный код]");
 
 	static const
-		str[] = "Result: %i"
+		str[] = "Result: %i";
 
 	new
 		string[sizeof(str) + 11 - 2],
