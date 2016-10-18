@@ -1,4 +1,4 @@
-CMD:b(playerid, params[])
+CMD:binary(playerid, params[])
 {
 	if (isnull(params))
 		return SendClientMessage(playerid, 0xAA3333AA, !"[Подсказка]: /b [двоичный код]");
