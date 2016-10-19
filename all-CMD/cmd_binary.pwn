@@ -8,8 +8,10 @@ CMD:binary(playerid, params[])
 
 	new
 		string[sizeof(str) + 11 - 2],
-		result = Binary(params);
-        
+		result;
+
+	Binary(params, result);
+	
 	if (!result)
 		return SendClientMessage(playerid, -1, !"Error");
 
@@ -19,11 +21,8 @@ CMD:binary(playerid, params[])
 	return 1;
 }  
 
-stock Binary(const sub[])
+stock Binary(const sub[], &result)
 {
-	new
-		result;
-
 	for (new i = 0, n = strlen(sub) - 1; i <= n; i++)
 	{
 		switch (sub[i])
