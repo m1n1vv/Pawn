@@ -1,4 +1,4 @@
-stock lesInt2(a, b, c)
+stock lesInt(a, b, c)
 {
 	static
 		minimum;
@@ -8,7 +8,7 @@ stock lesInt2(a, b, c)
 	return minimum;
 }
 
-stock Float:lesFloat2(Float:a, Float:b, Float:c)
+stock Float:lesFloat(Float:a, Float:b, Float:c)
 {
 	static
 		Float:minimum;
