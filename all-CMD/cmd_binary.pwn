@@ -23,7 +23,12 @@ CMD:binary(playerid, params[])
 
 stock Binary(const sub[], &result)
 {
-	for (new i = 0, n = strlen(sub) - 1; i <= n; i++)
+	new
+		i,
+		n = strlen(sub) - 1,
+		c;
+	
+	while((c = sub[i]) != '\0')
 	{
 		switch (sub[i])
 		{
@@ -36,6 +41,8 @@ stock Binary(const sub[], &result)
 				return 0;
 			}
 		}
+		
+		i++;
 	}
     
 	return result;
