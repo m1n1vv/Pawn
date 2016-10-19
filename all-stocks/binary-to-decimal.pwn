@@ -1,8 +1,5 @@
-stock Binary(const sub[])
+stock Binary(const sub[], &result)
 {
-	new
-		result;
-
 	for (new i = 0, n = strlen(sub) - 1; i <= n; i++)
 	{
 		switch (sub[i])
