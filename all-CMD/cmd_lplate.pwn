@@ -21,20 +21,15 @@ CMD:lplate(playerid, params[])
         {
                 switch(n)
                 {
-                        case 'А'..'Я', 'A'..'Z':
-                        {
-				i++;
-                        }
+
                         case '0'..'9':
                         {
-                                if (i > 1 || i < 3)
-					i++;
-                        }
-                        default:
-                        {
-                            	return return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
+                                if (i < 1 || i > 3)
+					return return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
                         }
                 }
+		
+		i++;
         }
 
         pInfo[playerid][pNumber][0] = EOS;
