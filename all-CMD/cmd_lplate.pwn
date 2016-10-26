@@ -3,7 +3,7 @@ CMD:lplate(playerid, params[])
         extract params -> new string:number[7], region; else
                 return SendClientMessage(playerid, -1, !"/lplate [номер] [регион]");
 
-        if (!strval(region) || strval(region) > 99)
+        if (region > 99)
                 return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Номер региона максимум может состоять из двух цифр");
 
         if (strlen(number) < 1 || strlen(number) > 6)
