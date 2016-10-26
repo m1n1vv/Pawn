@@ -27,8 +27,8 @@ CMD:lplate(playerid, params[])
                         }
                         case '0'..'9':
                         {
-                                if (i < 1 || i > 3)
-                                        return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
+                                if (i >  || i < 4)
+                                        continue;
                         }
                         default
                         {
