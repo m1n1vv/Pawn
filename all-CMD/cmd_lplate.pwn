@@ -10,7 +10,7 @@ CMD:lplate(playerid, params[])
                 return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Превышено количество символов"); 
 
     	static const 
-    		str[] = "Вы получили номерной знак. Ваш номер %s %d";
+    		str[] = "Вы получили номерной знак: %s %d";
 
         new
                 string[sizeof str + 6 + 2 - 2*2],
@@ -30,10 +30,6 @@ CMD:lplate(playerid, params[])
                         {
                                 if (i < 1 || i > 3)
                                         return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
-                        }
-                        default
-                        {
-                                return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
                         }
                 }
 
