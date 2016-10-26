@@ -28,7 +28,7 @@ CMD:lplate(playerid, params[])
                         case '0'..'9':
                         {
                                 if (i > 1 || i < 3)
-				i++;
+					i++;
                         }
                         default:
                         {
