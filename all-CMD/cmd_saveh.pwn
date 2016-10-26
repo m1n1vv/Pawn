@@ -1,7 +1,7 @@
 CMD:saveh(playerid, params[])
 {
         extract params -> new Float:radius; else
-                return SendClientMessage(playerid, 0xFF4530FF, !"[Подсказка]: /r [Радиус]");
+                return SendClientMessage(playerid, 0xFF4530FF, !"/saveh [Радиус]");
 
         static const
                 time[] = "[%i:%i:%i - %i.%i.%i]\r\n",
