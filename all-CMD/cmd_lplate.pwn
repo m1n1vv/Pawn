@@ -19,7 +19,8 @@ CMD:lplate(playerid, params[])
 
         if (!strval(number[1]) || !strval(number[2]) || !strval(number[3]))
 		return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
-        while ((n = number[i]) != '\0')
+        
+	while ((n = number[i]) != '\0')
         {
                 switch(n)
                 {
