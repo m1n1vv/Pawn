@@ -21,10 +21,19 @@ CMD:lplate(playerid, params[])
         {
                 switch(n)
                 {
+                        case 'А'..'Я', 'A'..'Z':
+                        {
+                                if (i > 0 || i < 4)
+                                        return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
+                        }
                         case '0'..'9':
                         {
                                 if (i < 1 || i > 3)
                                         return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
+                        }
+                        default
+                        {
+                                return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
                         }
                 }
 
