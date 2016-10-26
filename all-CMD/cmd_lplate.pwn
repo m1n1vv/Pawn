@@ -17,20 +17,22 @@ CMD:lplate(playerid, params[])
                 i,
                 n;
 
-        if (!strval(number[1]) || !strval(number[2]) || !strval(number[3]))
-		return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
-        
-	while ((n = number[i]) != '\0')
+        while ((n = number[i]) != '\0')
         {
                 switch(n)
                 {
-                        case '0'..'9', 'А'..'Я', 'A'..'Z':
+                        case 'А'..'Я', 'A'..'Z':
                         {
-                                i++;
+				i++;
+                        }
+                        case '0'..'9':
+                        {
+                                if (i > 1 || i < 3)
+				i++;
                         }
                         default:
                         {
-                            	return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
+                            	return return SendClientMessage(playerid, -1, !"Вы неправильно указали номер. Неправильное расположение букв и цифр. Пример: P849CK");
                         }
                 }
         }
