@@ -31,9 +31,9 @@ CMD:lplate(playerid, params[])
                 i++;
         }
 
-        PlayerInfo[playerid][pNumber][0] = EOS;
-        strins(PlayerInfo[playerid][pNumber], number, 0);
-        PlayerInfo[playerid][pRegion] =  region;
+        pInfo[playerid][pNumber][0] = EOS;
+        strins(pInfo[playerid][pNumber], number, 0);
+        pInfo[playerid][pRegion] =  region;
 
         format(string, sizeof string, str, number, region);
         SendClientMessage(playerid, -1, string);
