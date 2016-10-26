@@ -1,7 +1,7 @@
 CMD:getveh(playerid, params[])
 {
         extract params -> new Float:radius; else
-                return SendClientMessage(playerid, 0xFF4530FF, !"[Подсказка]: /r [Радиус]");
+                return SendClientMessage(playerid, 0xFF4530FF, !"[Подсказка]: /getveh [Радиус]");
 
         static const
                 str_y[] = "В радиусе %.0f м. обнаружено %i тс...",
