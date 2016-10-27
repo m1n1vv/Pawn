@@ -53,7 +53,7 @@ stock GetPlayerExperience(playerid)
 	return string;
 }
 
-stock ResetPlayerExperience(playerid, score)
+stock ResetPlayerExperience(playerid)
 {
 	return ex_sys__level{playerid} = ex_sys__experience[playerid] = 0;
 }
