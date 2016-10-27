@@ -26,16 +26,29 @@ static const
 
 stock GivePlayerExperience(playerid, score)
 {
-	if (score < 0)
+	if (!score)
 		return 1;
 
-	score = ex_sys__experience[playerid] += score;
+	if (ex_sys__experience[playerid] - score < 1)
+		return ex_sys__experience[playerid] += score;
 
-	while (score > ex_sys__scores[ex_sys__level{playerid} + 1])
+	ex_sys__experience[playerid] += score;
+
+	if (score)
 	{
-		ex_sys__level{playerid}++;
+		while (ex_sys__experience[playerid] > ex_sys__scores[ex_sys__level{playerid} + 1])
+		{
+			ex_sys__level{playerid}++;
+		}
 	}
-
+	else
+	{
+		while (ex_sys__experience[playerid] < ex_sys__scores[ex_sys__level{playerid}])
+		{
+			ex_sys__level{playerid}--;
+		}
+	}
+	
 	return 1;
 }
 
