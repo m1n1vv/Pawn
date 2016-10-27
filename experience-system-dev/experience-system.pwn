@@ -26,6 +26,9 @@ static const
 
 stock GivePlayerExperience(playerid, score)
 {
+	if (score < 0)
+		return 1;
+
 	score = ex_sys__experience[playerid] += score;
 
 	while (score > ex_sys__scores[ex_sys__level{playerid} + 1])
@@ -53,7 +56,7 @@ stock GetPlayerExperience(playerid)
 	return string;
 }
 
-stock ResetPlayerExperience(playerid)
+stock ResetPlayerExperience(playerid, score)
 {
 	return ex_sys__level{playerid} = ex_sys__experience[playerid] = 0;
 }
