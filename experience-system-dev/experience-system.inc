@@ -43,11 +43,8 @@ stock GivePlayerExperience(playerid, score)
 	}
 	else
 	{
-		while (ex_sys__experience[playerid] < ex_sys__scores[ex_sys__level{playerid}])
+		while (ex_sys__experience[playerid] < ex_sys__scores[ex_sys__level{playerid}] && ex_sys__level{playerid} != 0)
 		{
-			if (ex_sys__level{playerid} == 0)
-				break;
-			
 			ex_sys__level{playerid}--;
 		}
 	}
