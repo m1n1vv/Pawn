@@ -19,7 +19,6 @@
 #endif 										
 
 static const
-	ex_sys__str[] = "Ваш уровень: %i. %i/%i опыта до следующего.",
 	ex_sys__scores[] =
 	{
 		0,
@@ -52,21 +51,12 @@ stock GivePlayerExperience(playerid, score)
 	return 1;
 }
 
-stock GetPlayerExperience(playerid)
+stock GetPlayerExperience(playerid, &getxp, &getlvlxp)
 {
-	new
-	    getEx = ex_sys__experience[playerid] - ex_sys__scores[ex_sys__level{playerid}],
-	    getLvlEx = ex_sys__scores[ex_sys__level{playerid} + 1] - ex_sys__scores[ex_sys__level{playerid}],
-	    string[sizeof ex_sys__str + 3 + 11*2 - 2*3];
+	getxp = ex_sys__experience[playerid] - ex_sys__scores[ex_sys__level{playerid}];
+	getlvlxp = ex_sys__scores[ex_sys__level{playerid} + 1] - ex_sys__scores[ex_sys__level{playerid}];
 
-
-	format(string, sizeof string, ex_sys__str,
-	    ex_sys__level{playerid},
-	    getEx,
-	    getLvlEx
-	);
-
-	return string;
+	return 1;
 }
 
 stock ResetPlayerExperience(playerid)
