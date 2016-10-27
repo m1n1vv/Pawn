@@ -54,9 +54,9 @@ stock ResetPlayerExperience(playerid, score)
 	score = pInfo[playerid][pLvl] -= score;
 
 	while (score < str[pInfo[playerid][pLvl]])
-    {
-        pInfo[playerid][pLvl]--;
-    }
+	{
+		pInfo[playerid][pLvl]--;
+	}
 
 	return 1;
 }
