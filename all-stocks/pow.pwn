@@ -6,7 +6,7 @@ stock pow(a, n)
         new
                 b = a;
                 
-        while(--n != 0)
+        while (--n != 0)
         {
                 b *= a;
         }
