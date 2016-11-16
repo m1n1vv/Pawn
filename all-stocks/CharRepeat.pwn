@@ -3,12 +3,12 @@ stock CharRepeat(const string[])
 	new
 		symbol,
 		repeat,
-		i = -1,	
+		i,
 		s;
-
-	repeat = string[0];
 	
-	while ((symbol = string[++i]) != '\0')
+	repeat = symbol = string[0];
+	
+ 	do
 	{
 		if (symbol == repeat)
 		{
@@ -18,5 +18,6 @@ stock CharRepeat(const string[])
 		}
 		repeat = symbol;
 	}
+	while ((symbol = string[++i]) != '\0');
 	return 1;
 }
