@@ -1,4 +1,4 @@
-stock lesInt(a, b, c)
+stock ceilInt(a, b, c)
 {
 	static
 		minimum;
@@ -8,7 +8,7 @@ stock lesInt(a, b, c)
 	return minimum;
 }
 
-stock Float:lesFloat(Float:a, Float:b, Float:c)
+stock Float:ceilFloat(Float:a, Float:b, Float:c)
 {
 	static
 		Float:minimum;
