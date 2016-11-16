@@ -23,7 +23,7 @@ stock floorInt(a, b, c)
 	static
 		maximum;
 
-	minimum = (a > b) ? (a) : ((c > b) ? (c) : (b));
+	maximum = (a > b) ? (a) : ((c > b) ? (c) : (b));
 
 	return maximum;
 }
