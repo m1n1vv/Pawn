@@ -3,8 +3,10 @@ stock CharRepeat(const string[])
 	new
 		symbol,
 		repeat,
-		i = -1,
+		i,
 		s;
+		
+	symbol = repeat = string[0];
 	
  	do
 	{
