@@ -3,20 +3,24 @@ stock CharRepeat(const string[])
         new
                 symbol,
                 repeat,
-                i = -1,
+                i,
                 s;
 
         repeat = string[0];
 
         while ((symbol = string[++i]) != '\0')
         {
-                if (symbol == repeat)
+                if (symbol != repeat)
                 {
-                        s++;
-                        if (s == 3)
+                        s = 0;
+                }
+                else
+                {
+                        if (++s == 2)
                                 return 0;
                 }
                 repeat = symbol;
         }
+        
         return 1;
 }
