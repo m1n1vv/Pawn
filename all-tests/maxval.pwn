@@ -18,7 +18,7 @@ CMD:maxval(playerid, params[])
 	return 1;
 }
 
-stock strcharsplit(const string[], &index, seperator=' ')
+stock strcharsplit(const string[], &index, seperator=' ') //ziggi
 {
 	new result[20], i = 0;
 	if (index != 0 && string[index] != '\0') index++;
