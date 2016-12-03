@@ -1,4 +1,4 @@
-stock SendClientMessageToAdmin(level, const str[])
+stock SendClientMessageToAdmins(level, const str[])
 {
 	for(new i = 0, j = GetPlayerPoolSize() + 1; i <= j; i++)
         {
