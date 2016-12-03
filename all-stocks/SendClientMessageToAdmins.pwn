@@ -1,4 +1,4 @@
-stock SendClientMessageToAdmins(level, const str[])
+stock SendClientMessageToAdmins(level, color, const str[])
 {
 	for(new i = 0, j = GetPlayerPoolSize() + 1; i <= j; i++)
         {
@@ -7,7 +7,7 @@ stock SendClientMessageToAdmins(level, const str[])
 			
                 if (pInfo[i][pAdmin] >= level)
                 {
-                        SendClientMessage(i, -1, str);
+                        SendClientMessage(i, color, str);
                 }
         }
         return 1;
