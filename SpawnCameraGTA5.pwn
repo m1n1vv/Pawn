@@ -1,4 +1,4 @@
-stock SpawnCameraGTA5(playerid, Float:px, Float:py, Float:pz, Float:pa)
+stock SpawnCameraGTA5(playerid, Float:px, Float:py, Float:pz, Float:pa, time = 10000)
 {
         new 
                 Float:start = 200.0,
@@ -6,8 +6,8 @@ stock SpawnCameraGTA5(playerid, Float:px, Float:py, Float:pz, Float:pa)
                 Float:fy;
         fx = px + floatsin(pa, degrees);
         fy = py - floatcos(pa, degrees);
-        InterpolateCameraPos(playerid, fx, fy, pz+start, fx, fy, pz+5.0, 10000);
-        InterpolateCameraLookAt(playerid, px, py, pz+start-5.0, px, py, pz+1.0, 10000);
+        InterpolateCameraPos(playerid, fx, fy, pz+start, fx, fy, pz+5.0, time);
+        InterpolateCameraLookAt(playerid, px, py, pz+start-5.0, px, py, pz+1.0, time);
         return 1;
 }
 
