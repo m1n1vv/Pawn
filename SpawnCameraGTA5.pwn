@@ -1,7 +1,6 @@
-stock SpawnCameraGTA5(playerid, Float:px, Float:py, Float:pz, Float:pa, time = 10000)
+stock SpawnCameraGTA5(playerid, Float:px, Float:py, Float:pz, Float:pa, Float:start = 200.0, time = 10000)
 {
         new 
-                Float:start = 200.0,
                 Float:fx,
                 Float:fy;
         fx = px + floatsin(pa, degrees);
