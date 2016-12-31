@@ -5,6 +5,7 @@ stock MinOneOfTheThreeInt(a, b, c)
 stock MaxOneOfTheThreeInt(a, b, c)
 	return (a > b) ? (a) : ((c > b) ? (c) : (b));
 
+
 //Float:
 stock Float:MinOneOfTheThreeFloat(Float:a, Float:b, Float:c)
 	return (a < b) ? (a) : ((c < b) ? (c) : (b));
