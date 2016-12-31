@@ -1,7 +1,7 @@
 /*****************************************
 * Experience System 0.1.3
 * by m1n1vv
-* CMD: https://github.com/m1n1vv/Pawn/blob/master/experience-system-dev/cmd.pwn
+* Information:: http://pawn-wiki.ru/index.php?/topic/35468-experience-system
 *****************************************/
 
 #if  defined MN__EXPERIENCE_SYSTEM__INCLUDED
