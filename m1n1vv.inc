@@ -68,7 +68,7 @@ stock pow(a, n)
 	return b;
 }
 
-//Поиск минимального числа из трех
+//Поиск минимального или максимального числа из трех
 stock MinOneOfTheThreeInt(a, b, c)
 	return (a < b) ? (a) : ((c < b) ? (c) : (b));
 
