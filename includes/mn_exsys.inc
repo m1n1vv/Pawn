@@ -1,7 +1,7 @@
 /*****************************************
 * Experience System 0.1.3
 * by m1n1vv
-* Information:: http://pawn-wiki.ru/index.php?/topic/35468-experience-system
+* Information: http://pawn-wiki.ru/index.php?/topic/35468-experience-system
 *****************************************/
 
 #if  defined MN__EXPERIENCE_SYSTEM__INCLUDED
@@ -64,23 +64,3 @@ stock ResetPlayerExperience(playerid)
 {
 	return ex_sys__level{playerid} = ex_sys__experience[playerid] = 0;
 }
-
-public OnPlayerDisconnect(playerid, reason)
-{
-	ResetPlayerExperience(playerid);
-
-#if  defined ex_sys__OnPlayerDisconnect
-	ex_sys__OnPlayerDisconnect(playerid, reason);
-#endif
-	return 1;
-}
-
-#if defined _ALS_OnPlayerDisconnect
-	#undef OnPlayerDisconnect
-#else
-	#define _ALS_OnPlayerDisconnect
-#endif
-#define OnPlayerDisconnect ex_sys__OnPlayerDisconnect
-#if defined ex_sys__OnPlayerDisconnect
-forward ex_sys__OnPlayerDisconnect(playerid, reason);
-#endif
