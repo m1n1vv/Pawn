@@ -17,7 +17,7 @@ public OnPlayerUpdate(playerid)
             newweapon,
             oldweapon;
 
-        oldweapon = newweapon;
+        oldweapon = cw__changeid{playerid};
         newweapon = GetPlayerWeapon(playerid);
 
         if (newweapon != cw__changeid{playerid})
