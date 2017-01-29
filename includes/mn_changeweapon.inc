@@ -9,7 +9,7 @@ static
 
 public OnPlayerUpdate(playerid)
 {
-    if ((GetTickCount() - cw__tick[playerid]) > 100)
+    if ((GetTickCount() - cw__tick[playerid]) > 50)
     {
         cw__tick[playerid] = GetTickCount();
 
