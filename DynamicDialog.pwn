@@ -9,7 +9,7 @@ static
 	Float:fFooter,
 	Float:fSpace = 15.0;
 
-stock CreateDynamicDialog(playerid, number, Float:fArticle = 215.500)
+stock CreateDynamicDialog(playerid, number, Float:fArticle = 205.500)
 {
 	new
 		color;
