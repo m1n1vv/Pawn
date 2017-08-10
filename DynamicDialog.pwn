@@ -15,7 +15,7 @@ stock CreateDynamicDialog(playerid, number)
 	new
 		color;
 
-	fArticle = 205.500 - (number / 2) * fSpace;
+	fArticle = 205.5 - (number / 2) * fSpace;
 	fHeader = fArticle - 35.5 + fSpace * 2;
 	fFooter = fArticle + fSpace * (number + 1);
 
