@@ -11,7 +11,7 @@ static
 	Float:fFooter,
 	Float:fSpace = 15.0;
 
-stock CreateDynamicDialog(playerid, number)
+stock ShowDynamicDialogList(playerid, number)
 {
 	new
 		color;
