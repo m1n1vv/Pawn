@@ -40,7 +40,7 @@ stock CreateDynamicDialog(playerid, number)
 		TextDrawShowForPlayer(playerid, tdArticle[i]);
 	}
 
-	tdHeader = TextDrawCreate(320.000000, fHeader, !"header");
+	tdHeader = TextDrawCreate(320.000000, fHeader, !"Header");
 	TextDrawLetterSize(tdHeader, 0.000000, 2.000000);
 	TextDrawTextSize(tdHeader, 0.000000, 176.000000);
 	TextDrawAlignment(tdHeader, 2);
@@ -55,7 +55,7 @@ stock CreateDynamicDialog(playerid, number)
 	TextDrawSetShadow(tdHeader, 0);
 	TextDrawShowForPlayer(playerid, tdHeader);
 
-	tdFooter = TextDrawCreate(320.000000, fFooter, !"footer");
+	tdFooter = TextDrawCreate(320.000000, fFooter, !"Footer");
 	TextDrawLetterSize(tdFooter, 0.000000, 3.000000);
 	TextDrawTextSize(tdFooter, 0.000000, 176.000000);
 	TextDrawAlignment(tdFooter, 2);
