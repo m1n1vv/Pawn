@@ -18,7 +18,7 @@ stock CreateDynamicDialog(playerid, number)
 
 	fArticle = 205.5 - (number / 2) * fSpace - ((number % 2) ? (7.0) : (0.0));
 	fHeader = fArticle + fSpace;
-	fFooter = fHeader * (number + 1);
+	fFooter = fArticle + fSpace * (number + 1);
 
 	for (new i = 0; i < number; ++i)
 	{
