@@ -24,7 +24,7 @@ stock CreateDynamicDialog(playerid, number)
 		fArticle += fSpace;
 		color = (i%2) ?(-1425817601) : (276547583);
 
-		tdArticle[i] = TextDrawCreate(320.000000, fArticle, str[i]);
+		tdArticle[i] = TextDrawCreate(320.000000, fArticle, !"Dynamic Dialog");
 		TextDrawLetterSize(tdArticle[i], 0.000000, 1.300000);
 		TextDrawTextSize(tdArticle[i], 0.000000, 176.000000);
 		TextDrawAlignment(tdArticle[i], 2);
