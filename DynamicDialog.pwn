@@ -11,19 +11,19 @@ static
 	Float:fFooter,
 	Float:fSpace = 15.0;
 
-stock ShowDynamicDialogList(playerid, number)
+stock CreateDynamicDialog(playerid, number)
 {
 	new
 		color;
 
-	fArticle = 205.5 - (number / 2) * fSpace - ((number % 2) ? (7.5) : (0.0));
-	fHeader = fArticle - 35.5 + fSpace * 2;
+	fArticle = 205.5 - (number / 2) * fSpace - ((number % 2) ? (7.0) : (0.0));
+	fHeader = fArticle + fSpace;
 	fFooter = fArticle + fSpace * (number + 1);
 
 	for (new i = 0; i < number; ++i)
 	{
 		fArticle += fSpace;
-		color = (i % 2) ? (-1425817601) : (276547583);
+		color = (i % 2) ? (0xDBDBDBFF) : (-1);
 
 		tdArticle[i] = TextDrawCreate(320.000000, fArticle, !"Article");
 		TextDrawLetterSize(tdArticle[i], 0.000000, 1.300000);
@@ -42,7 +42,7 @@ stock ShowDynamicDialogList(playerid, number)
 	}
 
 	tdHeader = TextDrawCreate(320.000000, fHeader, !"Header");
-	TextDrawLetterSize(tdHeader, 0.000000, 2.000000);
+	TextDrawLetterSize(tdHeader, 0.000000, -2.500000);
 	TextDrawTextSize(tdHeader, 0.000000, MAX_DIALOG_HEIGHT);
 	TextDrawAlignment(tdHeader, 2);
 	TextDrawColor(tdHeader, -1);
@@ -62,7 +62,7 @@ stock ShowDynamicDialogList(playerid, number)
 	TextDrawAlignment(tdFooter, 2);
 	TextDrawColor(tdFooter, -1);
 	TextDrawUseBox(tdFooter, 1);
-	TextDrawBoxColor(tdFooter, -8912641);
+	TextDrawBoxColor(tdFooter, 0x202020FF);
 	TextDrawSetShadow(tdFooter, 0);
 	TextDrawSetOutline(tdFooter, 0);
 	TextDrawBackgroundColor(tdFooter, 255);
