@@ -15,16 +15,16 @@ stock CreateDynamicDialog(playerid, number)
 	new
 		color;
 
-	fArticle -= (number / 2) * hSpace;
-	fHeader = fArticle - 35.5 + hSpace * 2;
-	fFooter = fArticle + hSpace * (number + 1);
+	fArticle -= (number / 2) * fSpace;
+	fHeader = fArticle - 35.5 + fSpace * 2;
+	fFooter = fArticle + fSpace * (number + 1);
 
 	for (new i = 0; i < number; ++i)
 	{
-		fArticle += hSpace;
+		fArticle += fSpace;
 		color = (i%2) ?(-1425817601) : (276547583);
 
-		tdArticle[i] = TextDrawCreate(320.000000, fArticle, !"Article");
+		tdArticle[i] = TextDrawCreate(320.000000, fArticle, str[i]);
 		TextDrawLetterSize(tdArticle[i], 0.000000, 1.300000);
 		TextDrawTextSize(tdArticle[i], 0.000000, 176.000000);
 		TextDrawAlignment(tdArticle[i], 2);
@@ -40,7 +40,7 @@ stock CreateDynamicDialog(playerid, number)
 		TextDrawShowForPlayer(playerid, tdArticle[i]);
 	}
 
-	tdHeader = TextDrawCreate(320.000000, fHeader, !"Header");
+	tdHeader = TextDrawCreate(320.000000, fHeader, !"header");
 	TextDrawLetterSize(tdHeader, 0.000000, 2.000000);
 	TextDrawTextSize(tdHeader, 0.000000, 176.000000);
 	TextDrawAlignment(tdHeader, 2);
@@ -55,7 +55,7 @@ stock CreateDynamicDialog(playerid, number)
 	TextDrawSetShadow(tdHeader, 0);
 	TextDrawShowForPlayer(playerid, tdHeader);
 
-	tdFooter = TextDrawCreate(320.000000, fFooter, !"Footer");
+	tdFooter = TextDrawCreate(320.000000, fFooter, !"footer");
 	TextDrawLetterSize(tdFooter, 0.000000, 3.000000);
 	TextDrawTextSize(tdFooter, 0.000000, 176.000000);
 	TextDrawAlignment(tdFooter, 2);
