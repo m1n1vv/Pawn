@@ -1,4 +1,5 @@
-#define MAX_DIALOG_LIST	10
+#define MAX_DIALOG_LIST		10
+#define MAX_DIALOG_HEIGHT	(176.0)
 
 static
 	Text:tdHeader,
@@ -22,11 +23,11 @@ stock CreateDynamicDialog(playerid, number)
 	for (new i = 0; i < number; ++i)
 	{
 		fArticle += fSpace;
-		color = (i%2) ?(-1425817601) : (276547583);
+		color = (i % 2) ? (-1425817601) : (276547583);
 
 		tdArticle[i] = TextDrawCreate(320.000000, fArticle, !"Article");
 		TextDrawLetterSize(tdArticle[i], 0.000000, 1.300000);
-		TextDrawTextSize(tdArticle[i], 0.000000, 176.000000);
+		TextDrawTextSize(tdArticle[i], 0.000000, MAX_DIALOG_HEIGHT);
 		TextDrawAlignment(tdArticle[i], 2);
 		TextDrawColor(tdArticle[i], -1);
 		TextDrawUseBox(tdArticle[i], 1);
@@ -42,7 +43,7 @@ stock CreateDynamicDialog(playerid, number)
 
 	tdHeader = TextDrawCreate(320.000000, fHeader, !"Header");
 	TextDrawLetterSize(tdHeader, 0.000000, 2.000000);
-	TextDrawTextSize(tdHeader, 0.000000, 176.000000);
+	TextDrawTextSize(tdHeader, 0.000000, MAX_DIALOG_HEIGHT);
 	TextDrawAlignment(tdHeader, 2);
 	TextDrawColor(tdHeader, -1);
 	TextDrawUseBox(tdHeader, 1);
@@ -57,7 +58,7 @@ stock CreateDynamicDialog(playerid, number)
 
 	tdFooter = TextDrawCreate(320.000000, fFooter, !"Footer");
 	TextDrawLetterSize(tdFooter, 0.000000, 3.000000);
-	TextDrawTextSize(tdFooter, 0.000000, 176.000000);
+	TextDrawTextSize(tdFooter, 0.000000, MAX_DIALOG_HEIGHT);
 	TextDrawAlignment(tdFooter, 2);
 	TextDrawColor(tdFooter, -1);
 	TextDrawUseBox(tdFooter, 1);
