@@ -1,5 +1,5 @@
 enum 
-  pc_code
+ 	pc_code
 	{
 		pc_text[4],
 		pc_cash
