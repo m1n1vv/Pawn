@@ -3,11 +3,19 @@
 #endif
 #define MN__BW__INCLUDED
 
-//Блокировка проверки на замену оружия
-//#define BW__KEY__REPEAT   
+#if defined BW__KEY__REPEAT
+    #error symbol already defined: "BW__KEY__REPEAT"
+#endif
 
-//Блокировка сброса патронов при покупке       
-//#define BW__KEY__RESET_AMMO    
+#if defined  BW__KEY__RESET_AMMO
+    #error symbol already defined: "BW__KEY__RESET_AMMO"
+#endif
+
+//Блокировка проверки на замену оружия
+#define BW__KEY__REPEAT
+
+//Блокировка сброса патронов при покупке
+#define BW__KEY__RESET_AMMO
 
 #if !defined MN__BW__MAX_WEAPON_NAME
     #define MN__BW__MAX_WEAPON_NAME             (19)
@@ -31,10 +39,10 @@
 
 static
     mn__weaponid[MAX_PLAYERS char],
-    mn__ammunition[MAX_PLAYERS],
+    mn__ammo[MAX_PLAYERS],
     mn__slot[MAX_PLAYERS char],
     mn__price[MAX_PLAYERS],
-    mn__new_weapon_name[MN__BW__MAX_WEAPON_NAME];
+    mn__new_weapon_name[MAX_PLAYERS][MN__BW__MAX_WEAPON_NAME];
 
 static const
     mn__str[] =
@@ -85,32 +93,32 @@ static const
     },
     mn__weapon_slot_id[] =
     {
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 4, 6, 6
+        2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 4, 6, 6
     };
 
-stock BuyWeapons(playerid, weaponid, ammo = 0, price = 0)
+stock BuyWeapon(playerid, weaponid, ammo = 0, price = 0)
 {
     new
         pack[20],
         string[sizeof mn__str + MN__BW__MAX_WEAPON_NAME*2 + 2 + 3 + 4 - (2*5 + 19)];
 
     mn__weaponid{playerid} = weaponid;
-    mn__slot{playerid} = mn__weapon_slot_id[weaponid];
 
-    GetWeaponName(weaponid, mn__new_weapon_name, MN__BW__MAX_WEAPON_NAME);
+    GetWeaponName(weaponid, mn__new_weapon_name[playerid], MN__BW__MAX_WEAPON_NAME);
 
     weaponid -= 22;
+    mn__slot{playerid} = mn__weapon_slot_id[weaponid];
     if (!price) 
         price = mn__buystat_price[weaponid];
     if (!ammo) 
         ammo = mn__buystat_ammunition[weaponid];
 
     mn__price[playerid] = price;
-    mn__ammunition[playerid] = ammo;
+    mn__ammo[playerid] = ammo;
 
     strunpack(pack, mn__buystat_caliber[weaponid]);
     format(string, sizeof string, mn__str, 
-        mn__new_weapon_name,
+        mn__new_weapon_name[playerid],
         pack,
         ammo,
         mn__buystat_shooting_range[weaponid],
@@ -130,38 +138,38 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         #if !defined BW__KEY__REPEAT
 
         new
-            mn__old_weapon_name[MN__BW__MAX_WEAPON_NAME],
-            mn_player_slot[7],
-            mn__player_weapons[7],
-            mn_player_ammo[7];
+            old_weapon_name[MN__BW__MAX_WEAPON_NAME],
+            player_slot = mn__slot{playerid},
+            player_weaponid = mn__weaponid{playerid},
+            player_weapon,
+            player_ammo;
 
-        GetWeaponName(mn__weaponid{playerid}, mn__new_weapon_name, MN__BW__MAX_WEAPON_NAME);
+        GetWeaponName(mn__weaponid{playerid}, mn__new_weapon_name[playerid], MN__BW__MAX_WEAPON_NAME);
 
         for (new i = 2; i < 7; i++)
         {
-            GetPlayerWeaponData(playerid, i, mn__player_weapons[i], mn_player_ammo[i]);
-            mn_player_slot[i] = mn__weapon_slot_id[mn__player_weapons[i]];
+            GetPlayerWeaponData(playerid, i, player_weapon, player_ammo);
+            printf("%i | [mn_player_slot %i] [player_weapon %i] [player_ammo %i]", i, i, player_weapon, player_ammo);
 
-            if (mn__player_weapons[i] == mn__weaponid{playerid} && mn_player_ammo[i] != 0)
+            if (player_weapon == player_weaponid && player_ammo)
                 return SendClientMessage(playerid, MN__BW__COLOR_RED, !"У Вас уже есть это оружие");
 
-            if (mn_player_slot[i] == mn__slot{playerid} && mn__player_weapons[i] != mn__weaponid{playerid} && mn_player_ammo[i] != 0)
+            if (i == player_slot && player_weapon != player_weaponid && player_ammo)
             {
-                GetWeaponName(mn__player_weapons[i], mn__old_weapon_name, sizeof mn__old_weapon_name);
-
-                const
-                    RES = 36;
+                GetWeaponName(player_weapon, old_weapon_name, sizeof old_weapon_name);
 
                 new
-                    str[RES] = !"У Вас уже есть оружие в этом слоте.\nПри подтверждении все патроны старого оружия удалятся.\n\nЗаменить ";
-                strcat(str, mn__old_weapon_name);
+                    str[36] = !"У Вас уже есть оружие в этом слоте.\nПри подтверждении все патроны старого оружия удалятся.\n\nЗаменить ";
+                strcat(str, old_weapon_name);
                 strcat(str, !" на ");
-                strcat(str, mn__new_weapon_name);
+                strcat(str, mn__new_weapon_name[playerid]);
                 strcat(str, !"?");
 
-                return ShowPlayerDialog(playerid, MN__BW__DIALOG_PROOFE, DIALOG_STYLE_MSGBOX, !"Внимание!", str, "Да", "Закрыть");
+                return ShowPlayerDialog(playerid, MN__BW__DIALOG_PROOFE, DIALOG_STYLE_MSGBOX, !"Внимание!", str, !"Да", !"Закрыть");
             }
         }
+
+        printf("\n");
 
         #endif
         
@@ -189,15 +197,16 @@ static stock Buy(playerid)
     GivePlayerWeapon(playerid, mn__weaponid{playerid}, 1);
     SetPlayerAmmo(playerid, mn__weaponid{playerid}, 0);
     #endif
-    GivePlayerWeapon(playerid, mn__weaponid{playerid}, mn__ammunition[playerid]);
+    GivePlayerWeapon(playerid, mn__weaponid{playerid}, mn__ammo[playerid]);
 
     return SendClientMessage(playerid, MN__BW__COLOR_GREEN, !"Вы успешно совершили покупку");
 }
 
 public OnPlayerDisconnect(playerid, reason)
 {
+    mn__new_weapon_name[playerid][0] = EOS;
     mn__weaponid{playerid} =
-    mn__ammunition[playerid] =
+    mn__ammo[playerid] =
     mn__price[playerid] =
     mn__slot{playerid} = 0;
 #if  defined MN__BW__OnPlayerDisconnect
@@ -228,5 +237,5 @@ public OnPlayerDisconnect(playerid, reason)
 
 /*
 by m1n1vv
-Version: 0.4.2
+Version: 0.4.3
 */
