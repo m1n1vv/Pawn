@@ -35,7 +35,7 @@ stock PromoCode(const code[], &cash, booston = 0)
 	if (pc_counter == -1)
 		return cash = 0;
 
-	cash = (!booston) ? (pc_information[pc_counter][pc_cash]) : (pc_information[pc_counter][pc_cash]*2);
+	cash = (!booston) ? (pc_information[pc_counter][pc_cash]) : (pc_information[pc_counter][pc_cash]*booston);
 	
 	return 1;
 }
