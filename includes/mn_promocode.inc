@@ -17,7 +17,7 @@ static const
 	pc_information[pc_size][pc_code] =
 	{
 		{!"#kit",		300000},
-		{!"#hello", 	500000},
+		{!"#hello", 		500000},
 		{!"#pawn", 		1000000}
 	};
 
