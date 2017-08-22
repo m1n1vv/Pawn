@@ -31,9 +31,11 @@ public OnPlayerUpdate(playerid)
             );
         }
     }
-    #if defined mn_cw__OnPlayerUpdate
+    
+#if defined mn_cw__OnPlayerUpdate
     mn_cw__OnPlayerUpdate(playerid);
 #endif
+
     return 1;
 }
 #if defined _ALS_OnPlayerUpdate
