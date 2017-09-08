@@ -36,7 +36,7 @@ public OnVehicleSpawn(vehicleid)
 #if defined hydra__OnVehicleSpawn
 	hydra__OnVehicleSpawn(vehicleid);
 #endif
-    return 1;
+	return 1;
 }
 
 public OnVehicleDeath(vehicleid)
