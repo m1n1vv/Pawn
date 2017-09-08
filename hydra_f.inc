@@ -4,8 +4,7 @@
 
 static
 	hydra__id[MAX_VEHICLES],
-	hydra__alpha[MAX_VEHICLES],
-
+	
 	hydra__aim[MAX_VEHICLES],
 	hydra__height[MAX_VEHICLES],
 	hydra__speed[MAX_VEHICLES],
@@ -72,12 +71,9 @@ public HydraTimer()
 			string[8],
 			Float:__,
 			Float:_float,
-			_int,
-			alpha = hydra__alpha[i];
+			_int;
 
 		GetVehicleHealth(i, _float);
-		alpha = (alpha < 10) ? (++alpha) : (1);
-		hydra__alpha[i] = alpha;
 
 		valstr(string, floatround(_float));
 		strcat(string, "HP");
