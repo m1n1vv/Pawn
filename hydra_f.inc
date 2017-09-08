@@ -23,6 +23,7 @@ stock CreateFutureHydra(Float:x, Float:y, Float:z, Float:angle, respawn)
 
 	return vehicleid;
 }
+
 public OnVehicleSpawn(vehicleid)
 {
 	if (hydra__id[vehicleid])
