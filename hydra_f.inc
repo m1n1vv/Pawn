@@ -2,10 +2,6 @@
 	#define MAX_HYDRA_TIMER		100
 #endif
 
-#if !defined MAX_HYDRA_VEHICLES
-	#define MAX_HYDRA_VEHICLES	250
-#endif
-
 static
 	hydra__id[MAX_VEHICLES],
 	hydra__alpha[MAX_VEHICLES],
