@@ -10,8 +10,9 @@ enum
 		pc_cash
 	};
 
-const
+#if !defined pc_size
 	pc_size = 3;
+#endif
 	
 static const
 	pc_information[pc_size][pc_code] =
