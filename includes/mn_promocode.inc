@@ -10,12 +10,8 @@ enum
 		pc_cash
 	};
 
-#if !defined pc_size
-	const pc_size = 3;
-#endif
-	
 static const
-	pc_information[pc_size][pc_code] =
+	pc_information[][pc_code] =
 	{
 		{!"#kit",		300000},
 		{!"#hello", 		500000},
@@ -25,19 +21,20 @@ static const
 static
 	pc_counter;
 
-#if !defined strequal
-	stock bool:strequal(const string1[], const string2[], bool:ignorecase = false, length = cellmax)
-	{
-		new
-		    s1 = string1[0],
-		    s2 = string2[0];
+static const
+	pc_size = sizeof pc_information;
+
+stock bool:strequal(const string1[], const string2[], bool:ignorecase = false, length = cellmax)
+{
+	new
+		s1 = string1[0],
+		s2 = string2[0];
 		    
-		if ((s1 == '\0' || s2 == '\0') && (s1 != s2))
-		    return false;
+	if ((s1 == '\0' || s2 == '\0') && (s1 != s2))
+		return false;
 		    
-	    return strcmp(string1, string2, ignorecase, length) == 0;
-	}
-#endif
+	return strcmp(string1, string2, ignorecase, length) == 0;
+}
 
 stock PromoCode(const code[], &cash, booston = 0)
 {	
