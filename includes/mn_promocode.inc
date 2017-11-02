@@ -10,7 +10,7 @@ enum
 		pc_cash
 	};
 
-static const
+const
 	pc_size = 3;
 	
 static const
