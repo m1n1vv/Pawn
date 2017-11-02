@@ -11,7 +11,7 @@ enum
 	};
 
 #if !defined pc_size
-	pc_size = 3;
+	const pc_size = 3;
 #endif
 	
 static const
