@@ -1,4 +1,4 @@
-stock bool:strequal(const string1[], const string2[], bool:ignorecase = false, length = cellmax)
+stock bool:strequal(const string1[], string2[], bool:ignorecase = false, length = cellmax)
 {
     new
         s1 = string1[0],
