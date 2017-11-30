@@ -38,6 +38,9 @@ stock bool:strequal(const string1[], const string2[], bool:ignorecase = false, l
 
 stock PromoCode(const code[], &cash, booston = 0)
 {	
+	static
+		result;
+		
 	pc_counter = -1;
 
 	for (new i = 0; i < pc_size; i++)
@@ -54,8 +57,10 @@ stock PromoCode(const code[], &cash, booston = 0)
 		
 	if (booston == 1)
 		booston = 2;
+		
+	result = pc_information[pc_counter][pc_cash];
 
-	cash = (!booston) ? (pc_information[pc_counter][pc_cash]) : (pc_information[pc_counter][pc_cash]*booston);
+	cash = (!booston) ? (result) : (result*booston);
 	
 	return 1;
 }
