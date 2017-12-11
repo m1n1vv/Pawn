@@ -42,4 +42,3 @@ stock GetDirectionCompass(Float:angle)
 
 	return string;
 }
-
