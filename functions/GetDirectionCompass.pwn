@@ -29,7 +29,7 @@ stock GetDirectionCompass(Float:angle)
 	else if (result < 0)
                 result += 360;
 
-        if (result == 0)
+        if (!result)
                 result = 360;
 	
 	if (result % 45 == 0)
