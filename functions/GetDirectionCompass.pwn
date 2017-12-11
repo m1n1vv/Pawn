@@ -1,10 +1,10 @@
 stock GetDirectionCompass(Float:angle)
 {
 	static const
-	    str[][] =
-	    {
-	        "NE", "E", "SE", "S", "SW", "W", "NW", "N"
-	    };
+		str[][] =
+		{
+			"NE", "E", "SE", "S", "SW", "W", "NW", "N"
+		};
 
 	static
                 diff,
