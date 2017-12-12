@@ -20,6 +20,8 @@ stock GetDirectionCompass(Float:angle)
 
 	if (round - result > 5)
                 result = ++multiple * 15;
+		
+	result = 360 - result;
 	
 	if (result > 360)
                 result -= 360;
