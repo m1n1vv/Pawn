@@ -1,24 +1,23 @@
 stock Binary(const sub[], &result)
 {
 	static
-		n,
-		i,
-		c;
+		i;
 
-	result = i = 0;
-	n = strlen(sub);
-
-	while((c = sub[i++]))
+ 	for(result = i = 0;;i++)
 	{
-		switch (c)
+		switch (sub[i])
 		{
-			case 48, 49:
+			case 49:
 			{
-				result += (c == 49) ? (1 << n - i) : (0);
+				result = result * 2 + 1;
+			}
+			case 48:
+			{
+				result *= 2;
 			}
 			default:
 			{
-				return 0;
+				break;
 			}
 		}
 	}
