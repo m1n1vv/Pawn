@@ -8,7 +8,7 @@ stock Binary(const sub[], &result)
 	result = i = 0;
 	n = strlen(sub);
 
-	while((c = sub[i++]) != 0)
+	while((c = sub[i++]))
 	{
 		switch (c)
 		{
