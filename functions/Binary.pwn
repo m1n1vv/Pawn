@@ -9,7 +9,7 @@ stock Binary(const sub[], &result)
 		{
 			case 49:
 			{
-				result = result * 2 + 1;
+				result = result * 2 | 1;
 			}
 			case 48:
 			{
