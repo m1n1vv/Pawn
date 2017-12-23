@@ -11,7 +11,7 @@ stock joint(const separator[], ...)
 		valstr(str_val, val);
 		strcat(str_cat, str_val);
 		if (i != opt)
-		strcat(str_cat, separator);
+			strcat(str_cat, separator);
 	}
 	
 	return str_cat;
