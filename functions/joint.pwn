@@ -1,4 +1,4 @@
-stock joing_int(const separator[], ...)
+stock joint(const separator[], ...)
 {
 	static
 		val,
