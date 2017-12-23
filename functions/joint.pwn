@@ -2,17 +2,17 @@ stock joint(const separator[], ...)
 {
 	static
 		val,
-		str_val[11],
-		str_cat[100];
+		str[11],
+		string[100];
 
 	for(new i = 0, j = numargs(), opt = numargs()-1; ++i != j;)
 	{
 		val = getarg(i);
-		valstr(str_val, val);
-		strcat(str_cat, str_val);
+		valstr(str, val);
+		strcat(string, str);
 		if (i != opt)
-			strcat(str_cat, separator);
+			strcat(string, separator);
 	}
 	
-	return str_cat;
+	return string;
 }
