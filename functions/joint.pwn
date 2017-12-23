@@ -5,7 +5,7 @@ stock joint(const separator[], ...)
 		str[11],
 		string[100];
 
-	for(new i = 0, j = numargs(), opt = numargs()-1; ++i != j;)
+	for (new i = 0, j = numargs(), opt = numargs()-1; ++i != j;)
 	{
 		val = getarg(i);
 		valstr(str, val);
@@ -28,7 +28,7 @@ stock jointarray(const separator[], const value[])
 	
 	size = strlen(value);
 	
-	for(new i = 0, opt = size - 1; i < size; i++)
+	for (new i = 0, opt = size - 1; i < size; i++)
 	{
 		val = value[i];
 		valstr(str, val);
