@@ -28,12 +28,12 @@ stock jointarray(const separator[], const value[])
 	
 	size = strlen(value);
 	
-	for(new i = 0, s = size - 1; i < size; i++)
+	for(new i = 0, opt = size - 1; i < size; i++)
 	{
 		val = value[i];
 		valstr(str, val);
 		strcat(string, str);
-		if (i != s)
+		if (i != opt)
 			strcat(string, separator);
 	}
 
