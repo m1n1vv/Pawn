@@ -1,21 +1,31 @@
 stock joint(const separator[], ...)
 {
 	static
-		val,
+		i,
+		value,
+		opt,
+		num,
 		str[11],
 		string[100];
 
-	for (new i = 0, j = numargs(), opt = numargs()-1; ++i != j;)
+	num = numargs();
+	opt = num - 1;
+	i = 0;
+	string[0] = EOS;
+
+	while(++i != num)
 	{
-		val = getarg(i);
-		valstr(str, val);
+		value = getarg(i);
+		valstr(str, value);
 		strcat(string, str);
-		if (i != opt)
-			strcat(string, separator);
+		if (i == opt)
+			break;
+		strcat(string, separator);
 	}
-	
+
 	return string;
 }
+
 
 stock jointarray(const separator[], const value[])
 {
