@@ -16,7 +16,5 @@ CMD:binary(playerid, params[])
 		return SendClientMessage(playerid, -1, !"Error");
 
 	format(string, sizeof(string), str, result);
-	SendClientMessage(playerid, -1, string);
-    
-	return 1;
+	return SendClientMessage(playerid, -1, string);
 }
