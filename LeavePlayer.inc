@@ -6,10 +6,10 @@ stock LeavePlayer(playerid, const string[])
 	    	line;
 	    
 	new
-	    	str[40],
+	    	str[50],
 	    	str_id[5],
-	    	str_1[40],
-	    	str_2[40];
+	    	str_1[50],
+	    	str_2[50];
 	    
 	valstr(str_id, playerid);
 	sizeid = strlen(str_id);
