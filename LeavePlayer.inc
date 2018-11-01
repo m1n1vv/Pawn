@@ -16,7 +16,7 @@ stock LeavePlayer(playerid, const string[])
 	line = strlen(string);
 	strcat(str, string);
     
-	if(strfind(string, str_id, true) != -1)
+	if (strfind(string, str_id, true) != -1)
 	{
 		find = strfind(string, str_id);
 
