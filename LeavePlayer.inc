@@ -15,11 +15,10 @@ stock LeavePlayer(playerid, const string[])
 	sizeid = strlen(str_id);
 	line = strlen(string);
 	strcat(str, string);
-    
-	if (strfind(string, str_id, true) != -1)
+	
+	find = strfind(string, str_id, true);
+	if (find != -1)
 	{
-		find = strfind(string, str_id);
-		
 		strmid(str_1, string, 0, find);
 		strmid(str_2, string, find+sizeid, line);
 		strcat(str_1, "-1");
