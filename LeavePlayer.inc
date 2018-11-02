@@ -22,7 +22,7 @@ stock LeavePlayer(playerid, const string[])
 	{
 		strmid(str_1, string, 0, find);
 		strmid(str_2, string, find+sizeid, line);
-		strcat(str_1, "-1");
+		strcat(str_1, !"-1");
 		strcat(str_1, str_2);
 	    	return str_1;
 	}
