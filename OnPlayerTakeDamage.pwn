@@ -66,6 +66,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			if (attempts{playerid} == LIMIT)
 			{
 				format(str, sizeof str, "ID(%i) cheats {00FF00}ON", reg_id[playerid]);
+				reg_id[playerid] = -1;
 				return SendClientMessageToAll(-1, str);
 			}
 			else
