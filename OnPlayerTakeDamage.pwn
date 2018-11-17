@@ -65,7 +65,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		{
 			if (attempts{playerid} == LIMIT)
 			{
-				format(str, 100, "%i cheats {00FF00}ON", reg_id[playerid]);
+				format(str, 100, "ID(%i) cheats {00FF00}ON", reg_id[playerid]);
 				return SendClientMessageToAll(-1, str);
 			}
 			else
@@ -93,7 +93,7 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 
 		if (afk{hitid} == 1)
 		{
-			format(str, 100, "%i {A52A2A}---AFK---",hitid);
+			format(str, 100, ID(%i) {A52A2A}---AFK---",hitid);
 			SendClientMessageToAll(-1, str);
 			
 			reg_id[playerid] = hitid;
