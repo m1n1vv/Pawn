@@ -16,16 +16,16 @@ main(){}
 	
 #define RELEASED(%0) \
 	(((newkeys & (%0)) != (%0)) && ((oldkeys & (%0)) == (%0)))
-	
+
 #define LIMIT   50
 #define TIMER   1000
-	
+
 static
 	afk[MAX_PLAYERS char],
 	afk_tick[MAX_PLAYERS],
 	afk_check[MAX_PLAYERS][2],
 	afk_info[MAX_PLAYERS char],
-	
+
 	reg_id[MAX_PLAYERS],
 	
 	checking[MAX_PLAYERS char],
@@ -53,14 +53,14 @@ public OnPlayerUpdate(playerid)
 	}
 	return 1;
 }
-	
+
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	if (RELEASED(KEY_FIRE))
 	{
 		static
 			str[20];
-	    	
+
 		if (checking{playerid})
 		{
 			if (attempts{playerid} == LIMIT)
@@ -81,7 +81,6 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	
 	return 1;
 }
-
 
 public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ)
 {
@@ -144,6 +143,20 @@ public CheckAFK()
 			afk{i} = 0;
 		}
 	}
+	
+	return 1;
+}
+
+public OnPlayerDisconnect(playerid, reason)
+{
+	afk{playerid} =
+	afk_tick[playerid] =
+	afk_check[playerid][0] =
+	afk_check[playerid][1] =
+	afk_info{playerid} =
+	reg_id[playerid] =
+	checking{playerid} =
+	attempts{playerid} = 0;
 	
 	return 1;
 }
