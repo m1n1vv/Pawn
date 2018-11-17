@@ -66,19 +66,27 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	if (RELEASED(KEY_FIRE))
 	{
 		static
+			weaponid,
 			str[20];
 
 		if (checking{playerid})
 		{
-			if (attempts{playerid} == LIMIT)
-			{
-				format(str, 100, "%i cheats {00FF00}ON", reg_id[playerid]);
-				return SendClientMessageToAll(-1, str);
-			}
-			else
-			{
-			    attempts{playerid} = LIMIT;
-				return SendClientMessageToAll(-1, !"cheats {FF0000}OFF");
+		    weaponid = GetPlayerWeapon(playerid);
+		    
+		    if ((22 <= weaponid <= 34))
+		    {
+				if (attempts{playerid} == LIMIT)
+				{
+				    if (reg_id[playerid] == playerid)
+				        return 0;
+					format(str, 100, "%i cheats {00FF00}ON", reg_id[playerid]);
+					return SendClientMessageToAll(-1, str);
+				}
+				else
+				{
+				    attempts{playerid} = LIMIT;
+					return SendClientMessageToAll(-1, !"cheats {FF0000}OFF");
+				}
 			}
 		}
 	}
