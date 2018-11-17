@@ -1,4 +1,4 @@
-/*0.1 by m1n1vv
+/*0.2 by m1n1vv
 Заметки:
 - Из-за того, что OnPlayerTakeDamage не вызывается, когда игрок в AFK, пришлось сделать на это проверку;
 - Когда не вызывется OnPlayerTakeDamage, эту работу выполняет OnPlayerWeaponShot;
@@ -14,7 +14,7 @@ main(){}
 
 #define HOLDING(%0) \
 	((newkeys & (%0)) == (%0))
-	
+
 #define RELEASED(%0) \
 	(((newkeys & (%0)) != (%0)) && ((oldkeys & (%0)) == (%0)))
 
@@ -28,13 +28,19 @@ static
 	afk_info[MAX_PLAYERS char],
 
 	reg_id[MAX_PLAYERS],
-	
+
 	checking[MAX_PLAYERS char],
 	attempts[MAX_PLAYERS char];
 
 public OnGameModeInit()
 {
 	SetTimer(!"CheckAFK", TIMER, true);
+	return 1;
+}
+
+public OnPlayerConnect(playerid)
+{
+	attempts{playerid} = LIMIT;
 	return 1;
 }
 
@@ -60,27 +66,23 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	if (RELEASED(KEY_FIRE))
 	{
 		static
-			str[30];
+			str[20];
 
 		if (checking{playerid})
 		{
 			if (attempts{playerid} == LIMIT)
 			{
-				format(str, sizeof str, "ID(%i) cheats {00FF00}ON", reg_id[playerid]);
-				reg_id[playerid] = -1;
+				format(str, 100, "%i cheats {00FF00}ON", reg_id[playerid]);
 				return SendClientMessageToAll(-1, str);
 			}
 			else
 			{
+			    attempts{playerid} = LIMIT;
 				return SendClientMessageToAll(-1, !"cheats {FF0000}OFF");
 			}
 		}
 	}
-	if (HOLDING(KEY_FIRE))
-	{
-		return attempts{playerid} = LIMIT;
-	}
-	
+
 	return 1;
 }
 
@@ -89,15 +91,15 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 	if (hittype == BULLET_HIT_TYPE_PLAYER)
 	{
 		static
-			str[30];
+			str[20];
 
 		checking{playerid} = 1;
 
 		if (afk{hitid} == 1)
 		{
-			format(str, sizeof str, ID(%i) {A52A2A}---AFK---",hitid);
+			format(str, 100, "%i {A52A2A}---AFK---",hitid);
 			SendClientMessageToAll(-1, str);
-			
+
 			reg_id[playerid] = hitid;
 			if (attempts{playerid} != 0)
 			{
@@ -109,7 +111,7 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 	{
 	    checking{playerid} = 0;
 	}
-	
+
 	return 1;
 }
 
@@ -117,14 +119,17 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 {
 	if (afk{playerid} == 0)
 	{
-		reg_id[issuerid] = playerid;
-
-		if (attempts{issuerid} != 0)
+		if (issuerid != INVALID_PLAYER_ID)
 		{
-			attempts{issuerid}--;
+			reg_id[issuerid] = playerid;
+
+			if (attempts{issuerid} != 0)
+			{
+				attempts{issuerid}--;
+			}
 		}
 	}
-	
+
 	return 1;
 }
 
@@ -145,7 +150,7 @@ public CheckAFK()
 			afk{i} = 0;
 		}
 	}
-	
+
 	return 1;
 }
 
@@ -159,6 +164,6 @@ public OnPlayerDisconnect(playerid, reason)
 	reg_id[playerid] =
 	checking{playerid} =
 	attempts{playerid} = 0;
-	
+
 	return 1;
 }
