@@ -1,4 +1,4 @@
-/*0.1
+/*0.1 by m1n1vv
 Заметки:
 - Из-за того, что OnPlayerTakeDamage не вызывается, когда игрок в AFK, пришлось сделать на это проверку;
 - Когда не вызывется OnPlayerTakeDamage, эту работу выполняет OnPlayerWeaponShot;
