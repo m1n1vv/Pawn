@@ -3,7 +3,8 @@
 - Из-за того, что OnPlayerTakeDamage не вызывается, когда игрок в AFK, пришлось сделать на это проверку;
 - Когда не вызывется OnPlayerTakeDamage, эту работу выполняет OnPlayerWeaponShot;
 - Такте OnPlayerWeaponShot определяет, идет ли стрельба по игроку. Сделано для OnPlayerKeyStateChange;
-- Упущена проверка с отключенным OnPlayerTakeDamage и игроком в AFK.
+- Упущена проверка с отключенным OnPlayerTakeDamage и игроком в AFK;
+- Работает только на огнестрельное оружие.
 */
 
 #include <a_samp>
