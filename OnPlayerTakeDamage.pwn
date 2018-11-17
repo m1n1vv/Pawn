@@ -141,7 +141,7 @@ public CheckAFK()
 		}
 		else
 		{
-		    	afk{i} = 0;
+			afk{i} = 0;
 		}
 	}
 	
