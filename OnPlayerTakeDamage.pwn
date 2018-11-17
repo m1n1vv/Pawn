@@ -59,7 +59,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	if (RELEASED(KEY_FIRE))
 	{
 		static
-			str[20];
+			str[30];
 
 		if (checking{playerid})
 		{
@@ -88,7 +88,7 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 	if (hittype == BULLET_HIT_TYPE_PLAYER)
 	{
 		static
-			str[20];
+			str[30];
 
 		checking{playerid} = 1;
 
