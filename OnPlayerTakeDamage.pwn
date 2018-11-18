@@ -76,18 +76,18 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		    
 		    if ((22 <= weaponid <= 34))
 		    {
-				if (attempts{playerid} == LIMIT)
+				if (attempts{playerid} != TAKE_DAMAGE_LIMIT)
 				{
-					if (reg_id[playerid] == playerid)
-						return 0;
-					format(str, 100, "ID(%i) cheats {00FF00}ON", reg_id[playerid]);
+				    format(str, sizeof str, "ID(%i) cheats {FF0000}OFF", reg_id[playerid]);
+				    attempts{playerid} = TAKE_DAMAGE_LIMIT;
 					return SendClientMessageToAll(-1, str);
 				}
 				else
 				{
-					attempts{playerid} = LIMIT;
-					format(str, 100, "ID(%i) cheats {00FF00}ON", reg_id[playerid]);
-					return SendClientMessageToAll(-1, !"ID(%i) cheats {FF0000}OFF");
+					if (reg_id[playerid] == playerid)
+						return 0;
+					format(str, sizeof str, "ID(%i) cheats {00FF00}ON", reg_id[playerid]);
+					return SendClientMessageToAll(-1, str);
 				}
 			}
 		}
