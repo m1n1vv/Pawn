@@ -67,25 +67,27 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	{
 		static
 			weaponid,
-			str[20];
+			str[30];
 
-		if (checking{playerid})
+		if (checking{playerid} > 2)
 		{
 		    weaponid = GetPlayerWeapon(playerid);
+		    checking{playerid} = 0;
 		    
 		    if ((22 <= weaponid <= 34))
 		    {
 				if (attempts{playerid} == LIMIT)
 				{
-				    if (reg_id[playerid] == playerid)
-				        return 0;
-					format(str, 100, "%i cheats {00FF00}ON", reg_id[playerid]);
+					if (reg_id[playerid] == playerid)
+						return 0;
+					format(str, 100, "ID(%i) cheats {00FF00}ON", reg_id[playerid]);
 					return SendClientMessageToAll(-1, str);
 				}
 				else
 				{
-				    attempts{playerid} = LIMIT;
-					return SendClientMessageToAll(-1, !"cheats {FF0000}OFF");
+					attempts{playerid} = LIMIT;
+					format(str, 100, "ID(%i) cheats {00FF00}ON", reg_id[playerid]);
+					return SendClientMessageToAll(-1, !"ID(%i) cheats {FF0000}OFF");
 				}
 			}
 		}
@@ -101,7 +103,7 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 		static
 			str[20];
 
-		checking{playerid} = 1;
+		checking{playerid}++;
 
 		if (afk{hitid} == 1)
 		{
@@ -117,7 +119,7 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 	}
 	else
 	{
-	    checking{playerid} = 0;
+		checking{playerid} = 0;
 	}
 
 	return 1;
@@ -130,6 +132,7 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 		if (issuerid != INVALID_PLAYER_ID)
 		{
 			reg_id[issuerid] = playerid;
+			checking{playerid}++;
 
 			if (attempts{issuerid} != 0)
 			{
