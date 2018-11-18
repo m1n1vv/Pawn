@@ -132,7 +132,6 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 		if (issuerid != INVALID_PLAYER_ID)
 		{
 			reg_id[issuerid] = playerid;
-			checking{playerid}++;
 
 			if (attempts{issuerid} != 0)
 			{
