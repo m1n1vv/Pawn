@@ -69,7 +69,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			weaponid,
 			str[30];
 
-		if (checking{playerid} > 2)
+		if (checking{playerid} > 1)
 		{
 		    weaponid = GetPlayerWeapon(playerid);
 		    checking{playerid} = 0;
