@@ -14,13 +14,13 @@ main ()
 
         index_i = i == limit - 1 ? 0 : 1;
 		
-		if (m[i] == 0)
-		{
-			m[i] = m[i+index_i];
-			m[i+index_i] = 0;
+	if (m[i] == 0)
+	{
+		m[i] = m[i+index_i];
+		m[i+index_i] = 0;
 			
-		}
-		if (m[i] > 0)
-			printf("%i", m[i]);
+	}
+	if (m[i] > 0)
+		printf("%i", m[i]);
 	}
 }
