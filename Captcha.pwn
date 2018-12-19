@@ -3,6 +3,7 @@ stock Captcha()
 	static
 		rand,
 		string[6];
+
 	for (new i = 0; i < 5; i++)
 	{
 		rand = random(2);
