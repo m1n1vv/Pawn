@@ -3,7 +3,7 @@ stock NotReklama(playerid, string[])
 	static
 		c,
 		i,
-		num1;
+		num;
 
 	while ((c = string[++i]) != '\0')
 	{
@@ -22,6 +22,6 @@ stock NotReklama(playerid, string[])
 }
 
 /**/
-if (NotReklama(playerid, "127.0.0.1:7777") == 1)
-	return SendClientMessage(playerid, -1, "Предупреждение! Вы рекламируете сервер!");
+if (NotReklama(playerid, "127.0.0.1:7777"))
+	return SendClientMessage(playerid, -1, !"Предупреждение! Вы рекламируете сервер!");
 /**/
