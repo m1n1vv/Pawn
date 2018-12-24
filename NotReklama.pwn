@@ -1,4 +1,4 @@
-stock NotReklama(playerid, string[]) 
+stock IPDetector(playerid, string[]) 
 {
 	static
 		c,
@@ -22,6 +22,6 @@ stock NotReklama(playerid, string[])
 }
 
 /**/
-if (NotReklama(playerid, "127.0.0.1:7777"))
+if (IPDetector(playerid, "127.0.0.1:7777"))
 	return SendClientMessage(playerid, -1, !"Предупреждение! Вы рекламируете сервер!");
 /**/
