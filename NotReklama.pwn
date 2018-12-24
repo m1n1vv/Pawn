@@ -4,6 +4,8 @@ stock NotReklama(playerid, string[])
 		c,
 		i,
 		num;
+		
+	c = i = num = 0;
 
 	while ((c = string[++i]) != '\0')
 	{
@@ -15,8 +17,6 @@ stock NotReklama(playerid, string[])
 
 	if (num > 7)
 		return 1;
-
-	c = i = num = 0;
 
 	return 0;
 }
