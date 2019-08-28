@@ -1,4 +1,4 @@
-stock AddDelimiterToInt(value, const space[2] = " ")
+stock AddDelimiterToInt(value, const space[] = " ")
 {
 	new
 		string[16],
