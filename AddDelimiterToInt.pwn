@@ -1,7 +1,7 @@
 stock AddDelimiterToInt(value)
 {
 	new
-		string[20],
+		string[16],
 		i,
 		k,
 		v = 3,
