@@ -9,18 +9,18 @@ stock AddDelimiterToInt(value)
 
 	valstr(string, value >= 0 ? value : -value);
 
-    k = strlen(string)%3;
-    i = strlen(string)/3;
-    
-    if (k != 0)
-    {
-        strins(string, " ", k);
-        k++;
+	k = strlen(string)%3;
+	i = strlen(string)/3;
+	
+	if (k != 0)
+	{
+		strins(string, " ", k);
+		k++;
 	}
 
 	while (--i > 0)
 	{
-	    k += v;
+		k += v;
 		strins(string, " ", k);
 		v++;
 	}
