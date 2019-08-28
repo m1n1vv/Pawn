@@ -9,8 +9,9 @@ stock AddDelimiterToInt(value)
 
 	valstr(string, value >= 0 ? value : -value);
 
-	k = strlen(string)%3;
-	i = strlen(string)/3;
+	k = strlen(string);
+	i = k/3;
+	k %= 3;
 	
 	if (k != 0)
 	{
