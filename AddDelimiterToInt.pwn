@@ -1,4 +1,4 @@
-stock AddDelimiterToInt(value)
+stock AddDelimiterToInt(value, const space[2] = " ")
 {
 	new
 		string[16],
@@ -15,14 +15,14 @@ stock AddDelimiterToInt(value)
 	
 	if (k != 0)
 	{
-		strins(string, " ", k);
+		strins(string, space, k);
 		k++;
 	}
 
 	while (--i > 0)
 	{
 		k += v;
-		strins(string, " ", k);
+		strins(string, space, k);
 		v++;
 	}
 
