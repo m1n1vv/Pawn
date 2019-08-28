@@ -1,4 +1,4 @@
-stock FormatNumber(value)
+stock AddDelimiterToInt(value)
 {
 	new
 		string[20],
