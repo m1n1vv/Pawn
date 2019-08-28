@@ -23,6 +23,7 @@ stock AddDelimiterToInt(value)
 	{
 		k += v;
 		strins(string, " ", k);
+		v++;
 	}
 
 	if (value < 0)
