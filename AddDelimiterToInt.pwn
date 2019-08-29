@@ -7,7 +7,7 @@ stock AddDelimiterToInt(value, const space[] = " ")
 		v = 3,
 		s;
 
-	valstr(string, value >= 0 ? value : -value);
+	format(int_string, sizeof(int_string), "%i", number >= 0 ? number : -number);
 
 	k = strlen(string);
 	i = k/3;
